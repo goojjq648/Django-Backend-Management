@@ -1,2 +1,2 @@
 # Django-Backend-Management
-Django Backend Management + Bootstrap 5 template
+Django + Bootstrap 5 Backend Management
