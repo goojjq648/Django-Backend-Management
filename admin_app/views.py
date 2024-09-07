@@ -1,7 +1,7 @@
 from django.http import HttpResponse, JsonResponse, FileResponse
 from .admin_setting import AdminSetting
 from django.shortcuts import render, get_object_or_404, redirect
-# from food_app.models import Restaurant, Restaurantcategory, Businesshours, Category
+from restaurant_app.models import Restaurant, Restaurantcategory, Businesshours, Category
 
 # Create your views here.
 
@@ -27,14 +27,11 @@ def getpagedata(request):
         case 'Home':
             return render(request, 'admin_app/base/home.html')
         case 'sub_restaurant':
-            pass
-            # return restaurant(request)
+            return restaurant(request)
         case 'sub_type':
-            pass
-            # return sub_type(request)
+            return sub_type(request)
         case 'sub_business_hours':
-            pass
-            # return restaurant_business_hours(request)
+            return restaurant_business_hours(request)
         case 'sub_setting':
             admin_setting = get_admin_setting()
             admin_list = admin_setting.get_admin_func_type_list()
@@ -51,30 +48,30 @@ def edit_restaurant_data(request):
     return render(request, 'admin_app/restaurant/sub_restaurant.html', locals())
 
 
-# def restaurant(request):
-#     title = '餐廳資料'
-#     fields = ['編號', '餐廳名稱', '評分', '評論數', '地址',
-#               '平均消費', '營業時間', '緯度', '經度', '圖片網址', '選項']
+def restaurant(request):
+    title = '餐廳資料'
+    fields = ['編號', '餐廳名稱', '評分', '評論數', '地址',
+              '平均消費', '營業時間', '緯度', '經度', '圖片網址', '選項']
 
-#     restaurantDatas = Restaurant.objects.all()
+    restaurantDatas = Restaurant.objects.all()
 
-#     print(restaurantDatas)
+    print(restaurantDatas)
 
-#     return render(request, 'admin_app/restaurant/sub_restaurant.html', locals())
-
-
-# def sub_type(request):
-#     title = '餐廳類型'
-#     fields = ['編號', '類型名稱']
-#     restaurantDatas = Category.objects.all()
-#     return render(request, 'admin_app/restaurant/sub_type.html', locals())
+    return render(request, 'admin_app/restaurant/sub_restaurant.html', locals())
 
 
-# def restaurant_business_hours(request):
-#     title = '餐廳營業時間'
-#     fields = ['編號', '星期幾', '開始時間', '結束時間']
-#     restaurantDatas = Businesshours.objects.all()
-#     return render(request, 'admin_app/restaurant/sub_business_hours.html', locals())
+def sub_type(request):
+    title = '餐廳類型'
+    fields = ['編號', '類型名稱']
+    restaurantDatas = Category.objects.all()
+    return render(request, 'admin_app/restaurant/sub_type.html', locals())
+
+
+def restaurant_business_hours(request):
+    title = '餐廳營業時間'
+    fields = ['編號', '星期幾', '開始時間', '結束時間']
+    restaurantDatas = Businesshours.objects.all()
+    return render(request, 'admin_app/restaurant/sub_business_hours.html', locals())
 
 
 def sub_setting(request, admin_list, mainType):
