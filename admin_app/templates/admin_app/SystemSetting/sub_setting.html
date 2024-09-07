@@ -1,0 +1,44 @@
+<div class="card shadow mb-4">
+    <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+    </div>
+    <div class="card-body">
+        <div class="form-floating">
+            <select class="form-select" id="admin_select" aria-label="Floating label select example">
+                <option selected>選擇主類別</option>
+                {% for key, value in admin_list.items %}
+                    <option value="{{ key }}">{{ key }}</option>
+                {% endfor %}
+                <option value="addMainType">新增主類別</option>
+            </select>
+            <label for="admin_select">Works with selects</label>
+        </div>
+        <hr>
+        
+        <form id="settingForm">
+            <div class="mb-3">
+                <label for="InputMainTypeName" class="form-label">主類別名稱</label>
+                <input type="text" class="form-label" id="InputMainTypeName" name="name"/>
+            </div>
+
+            <div class="row g-3">
+                <label for="InputMainTypeName" class="form-label">子類別設定</label>
+                <div class="col">
+                  <input type="text" class="form-control" id ="InputSubTypeID" placeholder="子類別ID" aria-label="SubType ID">
+                </div>
+                <div class="col">
+                  <input type="text" class="form-control" id ="InputSubTypeName" placeholder="子類別名稱" aria-label="SubType Name">
+                </div>
+
+                <div id="subcategory-container">
+                    <!-- New subcategory fields will be added here -->
+                </div>
+                <button type="button" class="btn btn-primary" id="add-subcategory">新增子類別</button>
+            </div>
+
+            <hr>
+        
+            <button type="submit" class="btn btn-primary" id="buttonSubmit">新增</button>
+        </form>
+    </div>
+</div>

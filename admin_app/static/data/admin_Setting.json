@@ -1,0 +1,25 @@
+{
+    "Home": {
+      "button_icon": "#home"
+    },
+    "Restaurant": {
+      "button_icon": "#grid",
+      "sub_detail": {
+        "sub_restaurant": "餐廳資料",
+        "sub_type": "餐廳類型",
+        "sub_business_hours": "餐廳營業時間"
+      }
+    },
+    "Customers": {
+      "button_icon": "#people-circle",
+      "sub_detail": {
+        "member": "管理會員資料"
+      }
+    },
+    "SystemSetting": {
+      "button_icon": "#grid",
+      "sub_detail": {
+        "sub_setting": "設定類別"
+      }
+    }
+}
