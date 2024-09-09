@@ -1,6 +1,6 @@
 <div class="card shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Basic Card Example</h6>
+        <h6 class="m-0 font-weight-bold text-primary">後臺類別設定</h6>
     </div>
     <div class="card-body">
         <div class="form-floating">
@@ -15,10 +15,31 @@
         </div>
         <hr>
         
-        <form id="settingForm">
+        <form id="settingForm" class="d-none">
+            <input type="hidden" id="admin_setting_action" name="admin_setting_action" value="">
+
             <div class="mb-3">
                 <label for="InputMainTypeName" class="form-label">主類別名稱</label>
                 <input type="text" class="form-label" id="InputMainTypeName" name="name"/>
+                <input type="hidden" id="OrgInputMainTypeName" name="OrgInputMainTypeName" value="">
+            </div>
+
+            <div class="container mt-5">
+                <div class="dropdown">
+                    <label for="InputMainTypeName" class="form-label">選擇類別 ICON</label>
+                    <button class="btn btn-secondary btn-sm btn-info dropdown-toggle" type="button" id="InputIconDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                        選擇 ICON 
+                    </button>
+                    <ul class="dropdown-menu" id="admin_setting_iconDropdown" aria-labelledby="iconDropdown">
+                    </ul>
+                </div>
+                
+                <input type="hidden" id="selected_main_Icon" name="selected_main_Icon" value="">
+
+                <!-- Display selected icon -->
+                <div class="mt-4">
+                    <div id="selected_MainType_Icon"></div>
+                </div>
             </div>
 
             <div class="row g-3">
@@ -33,12 +54,16 @@
                 <div id="subcategory-container">
                     <!-- New subcategory fields will be added here -->
                 </div>
+                <input type="hidden" id ="subcategory_Idx" name="subcategory_Idx" value="0">
                 <button type="button" class="btn btn-primary" id="add-subcategory">新增子類別</button>
             </div>
 
             <hr>
         
-            <button type="submit" class="btn btn-primary" id="buttonSubmit">新增</button>
+            <button type="submit" class="btn btn-primary" id="confirm_edit_setting">確定</button>
+            <button type="button" class="btn btn-danger" id="confirm_delete_setting">刪除</button>
+            
+            <div id="div_edit_setting_result" class="alert alert-info mt-3 hidden"></div>
         </form>
     </div>
 </div>

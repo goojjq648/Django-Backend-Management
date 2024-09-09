@@ -31,7 +31,6 @@ export class BasePage {
 
     hidePage() {
       if (this.active) {
-        console.log(`hhhh頁面 ${this.pageID} 隱藏中...`);
         const pageElement = document.getElementById(this.pageID);
         if (pageElement) {
           pageElement.classList.remove('active');
@@ -101,12 +100,35 @@ export class SubPage extends BasePage {
   
     // 重寫頁面載入邏輯，並動態載入對應的 JS
     async loadPage() {
-      console.log(`子頁面 ${this.pageID} 載入中...`);
       await super.loadPage();
+      console.log(`子頁面 ${this.pageID} 載入Script中...`);
+      const _self = this;
+      
+      (function() {
+        function getCookie(name) {
+          let cookieValue = null;
+          if (document.cookie && document.cookie !== '') {
+              const cookies = document.cookie.split(';');
+              for (let i = 0; i < cookies.length; i++) {
+                  const cookie = cookies[i].trim();
+                  if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                      cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                      break;
+                  }
+              }
+          }
+          return cookieValue;
+        }
+        console.log(`getCookie ${getCookie('csrftoken')}`);
 
-      this.loadScript(`/static/scripts/${this.pageID}.js`, function() {
-        bindSubSettingEvents();
-      });
+        _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
+          bindSubSettingEvents();
+          window.csrf_token = getCookie('csrftoken');
+          console.log(`csrf_token ${window.csrf_token}`);
+        });
+        
+      })();
+
       // this.loadScript();
     }
   

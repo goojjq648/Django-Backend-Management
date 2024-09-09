@@ -1,18 +1,3 @@
-function getCookie(name) {
-    let cookieValue = null;
-    if (document.cookie && document.cookie !== '') {
-        const cookies = document.cookie.split(';');
-        for (let i = 0; i < cookies.length; i++) {
-            const cookie = cookies[i].trim();
-            if (cookie.substring(0, name.length + 1) === (name + '=')) {
-                cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
-                break;
-            }
-        }
-    }
-    return cookieValue;
-}
-
 function bindSubSettingEvents() {
     // 表格的初始化及設置
     $(document).ready(function() {
@@ -84,7 +69,7 @@ function bindSubSettingEvents() {
         const restaurant_form = document.querySelector('#restaurant_form');
         const restaurant_FormData = new FormData(restaurant_form);
         const restaurant_url = `/admin_app/edit_restaurant/`;
-        const csrftoken = getCookie('csrftoken');
+        const csrftoken = window.csrf_token;
 
         const response = await fetch(restaurant_url,{
             method:'POST',
@@ -95,6 +80,5 @@ function bindSubSettingEvents() {
         })
 
         const restaurant_data = await response.text();
-        console.log(restaurant_data);
     })
 }

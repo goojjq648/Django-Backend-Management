@@ -19,7 +19,7 @@ async function init() {
     let mainPage = mainKey;
     let sublist = admin_setting[mainKey]['sub_detail'];
 
-    // 註冊主/子頁面
+    // 註冊主頁面
     if (sublist){
       page_manager.registerPage(new MainPage(mainPage, sublist));
     }
@@ -44,6 +44,14 @@ document.querySelectorAll('.sidebar .nav-link').forEach(link => {
       const pageID = link.textContent.trim();
       page_manager.switchPage(pageID);
       currentType = pageID;
+
+      // 移除所有按鈕的 active 類別
+      document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+        link.classList.remove('active');
+      });
+
+      // 設定當前按鈕的 active 類別
+      link.classList.add('active');
   });
 })
 

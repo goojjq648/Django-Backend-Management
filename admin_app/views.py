@@ -5,13 +5,51 @@ from restaurant_app.models import Restaurant, Restaurantcategory, Businesshours,
 
 # Create your views here.
 
+
 def get_admin_setting():
     return AdminSetting()
+
 
 def get_admin_setting_data(request):
     data = get_admin_setting().get_admin_func_type_list()
 
     return JsonResponse(data)
+
+
+def confirm_editSetting(request):
+    select_action = request.POST.get('admin_setting_action')
+    main_type = request.POST.get('name')
+    if not main_type:
+        return HttpResponse('沒有填寫主類別名稱') 
+    
+    button_icon = request.POST.get('selected_main_Icon')
+    if not button_icon:
+        return HttpResponse('沒有設定主類別圖標') 
+
+    sub_idx = request.POST.get('subcategory_Idx')
+    sublist = {}
+    
+    for i in range(int(sub_idx)+1):
+        # 子類別ID
+        sub_id = request.POST.get('subcategories[' + str(i) + '][id]')
+        # 子類別名稱
+        sub_name = request.POST.get('subcategories[' + str(i) + '][name]')
+        print(sub_id, sub_name)
+        if not sub_id:
+            return HttpResponse('沒有填寫子類別ID')
+        if not sub_name:
+            return HttpResponse('沒有填寫子類別名稱')
+        
+        sublist[sub_id] = sub_name
+    
+    # 處理設定檔
+    get_admin_setting().edit_admin_func_type_list(main_type, button_icon, sublist)
+    
+    if select_action == 'addMainType':
+        return HttpResponse('新增成功')
+    else:
+        return HttpResponse('修改成功')
+
 
 def admin_mainPage(request):
     # 對應後台可以點選的 key = type, value = 子選單list(id : sub_name) (可以複數，沒有子選單就不處理給空值)
@@ -55,8 +93,6 @@ def restaurant(request):
 
     restaurantDatas = Restaurant.objects.all()
 
-    print(restaurantDatas)
-
     return render(request, 'admin_app/restaurant/sub_restaurant.html', locals())
 
 
@@ -77,12 +113,21 @@ def restaurant_business_hours(request):
 def sub_setting(request, admin_list, mainType):
     return render(request, 'admin_app/SystemSetting/sub_setting.html', {'admin_list': admin_list, 'mainType': mainType})
 
+
 def admin_select_type(request):
     mainType = request.GET.get('mainType')
-    
+
     admin_setting = get_admin_setting()
     admin_list = admin_setting.get_admin_func_type_list()
 
-    print(admin_list[mainType])
+    if mainType is None:
+        return JsonResponse({})
+    elif mainType == 'addMainType':
+        return JsonResponse({})
+    else:
+        if admin_list[mainType] is not None:
+            return JsonResponse(admin_list[mainType])
 
-    return sub_setting(request, admin_list, mainType)
+    # print(admin_list[mainType].items())
+
+    return JsonResponse(admin_list[mainType])

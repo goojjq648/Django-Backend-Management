@@ -21,7 +21,7 @@ export class PageManager {
           subPageID === null) {
             return
       }
-
+      
       if (this.currentPage) {
         this.currentPage.hidePage();
       }
