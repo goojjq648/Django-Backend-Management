@@ -27,6 +27,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+LOGIN_REDIRECT_URL = '/admin_app/dashboard'
+LOGOUT_REDIRECT_URL = '/admin_app/dashboard'
+
 
 # Application definition
 
@@ -77,8 +80,12 @@ WSGI_APPLICATION = 'Backend_Manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'restaurant',
+        'USER': 'root',
+        'PASSWORD': 'P@ssw0rd',
+        'HOST': 'localhost',
+        'PORT': 3306,
     }
 }
 

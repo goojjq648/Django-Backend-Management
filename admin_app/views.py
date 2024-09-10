@@ -1,9 +1,13 @@
+from django.contrib.auth.decorators import login_required
 from django.http import HttpResponse, JsonResponse, FileResponse
 from .admin_setting import AdminSetting
 from django.shortcuts import render, get_object_or_404, redirect
 from restaurant_app.models import Restaurant, Restaurantcategory, Businesshours, Category
 
 # Create your views here.
+
+def admin_login(request):
+    return render(request, 'admin_app/base/sign_in.html')
 
 
 def get_admin_setting():
@@ -51,8 +55,8 @@ def confirm_editSetting(request):
         return HttpResponse('修改成功')
 
 
+@login_required(login_url = 'admin_app:adminlogin')
 def admin_mainPage(request):
-    # 對應後台可以點選的 key = type, value = 子選單list(id : sub_name) (可以複數，沒有子選單就不處理給空值)
     admin_setting = get_admin_setting()
     admin_func_type_list = admin_setting.get_admin_func_type_list()
     return render(request, 'admin_app/base/admin_main_page.html', locals())
