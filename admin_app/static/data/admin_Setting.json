@@ -1,25 +1,42 @@
 {
     "Home": {
-      "button_icon": "#home"
+        "button_icon": "#home"
     },
     "Restaurant": {
-      "button_icon": "#grid",
-      "sub_detail": {
-        "sub_restaurant": "餐廳資料",
-        "sub_type": "餐廳類型",
-        "sub_business_hours": "餐廳營業時間"
-      }
+        "button_icon": "#grid",
+        "sub_detail": {
+            "sub_restaurant": "餐廳資料",
+            "sub_type": "餐廳類型",
+            "sub_business_hours": "餐廳營業時間",
+            "sub_test": "測試用"
+        }
     },
     "Customers": {
-      "button_icon": "#people-circle",
-      "sub_detail": {
-        "member": "管理會員資料"
-      }
+        "button_icon": "#people-circle",
+        "sub_detail": {
+            "member": "管理會員資料"
+        }
     },
     "SystemSetting": {
-      "button_icon": "#grid",
-      "sub_detail": {
-        "sub_setting": "設定類別"
-      }
+        "button_icon": "#grid",
+        "sub_detail": {
+            "sub_setting": "設定類別",
+            "sub_adminPermission": "後台權限設定",
+            "sub_admin_member": "後台會員設定"
+        }
+    },
+    "Shop": {
+        "button_icon": "#Backpack2",
+        "sub_detail": {
+            "sub_shop": "商城資料",
+            "sub_order": "商城訂單"
+        }
+    },
+    "Test": {
+        "button_icon": "#cart3",
+        "sub_detail": {
+            "sub_test": "測試用",
+            "sub_test2": "測試用2"
+        }
     }
 }

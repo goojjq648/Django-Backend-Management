@@ -1,0 +1,41 @@
+<div class="card shadow">
+    <div class="card-header py-3 mb-4" style="border-top: 0.25rem solid #708ee9 !important;">
+        <h6 class="m-0 font-weight-bold text-primary">
+          <button type="button" class="btn btn-primary edit-btn" id="admin_member_add" data-bs-toggle="modal" data-bs-target="#formModal">新增後台會員資料</button>
+        </h6>
+    </div>
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-bordered" id="admin_member_table" width="100%" cellspacing="0">
+                <thead>
+                    <tr>
+                      {% for fieldName in fields %}
+                        <th>{{ fieldName }}</th>
+                      {% endfor %}
+                    </tr>
+                </thead>
+                <tfoot>
+                    <tr>
+                      {% for fieldName in fields %}
+                        <th>{{ fieldName }}</th>
+                      {% endfor %}
+                    </tr>
+                </tfoot>
+                <tbody>
+                    {% for user in users %}
+                      <tr data-id="{{ user.id }}">
+                          <td>{{ user.username }}</td>
+                          <td>{{ user.email }}</td>
+                          <td>
+                              <button type="button" class="btn btn-primary edit-btn" id="user_edit_{{user.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
+                              <p> </p>
+                              <button type="button" class="btn btn-danger" id="user_delete_{{user.id}}">刪除</button>
+                          </td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+  </div>
