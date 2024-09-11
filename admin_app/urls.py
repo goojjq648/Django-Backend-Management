@@ -14,6 +14,7 @@ urlpatterns = [
     
     # 後台主頁面
     path('dashboard/', views.admin_mainPage, name='admin_dashboard'),
+    path('loadscript/', views.check_dyamic_jsfile, name='loadscript'),
     path('get_admin_setting/', system_setting.fetch_admin_setting_data, name='getadminsetting'),
     path('confirm_editSetting/', system_setting.confirm_editSetting,
          name='confirmeditSetting'),

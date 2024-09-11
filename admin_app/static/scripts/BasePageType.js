@@ -65,7 +65,6 @@ export class MainPage extends BasePage {
     }
 
     hidePage() {
-      console.log(`頁面 ${this.pageID} 隱藏中...`);
       super.hidePage();
 
       if (this.sub_page_list) {
@@ -80,7 +79,6 @@ export class MainPage extends BasePage {
 
     hideOffCanvas() {
       if (this.sub_page_list) {
-        console.log(`${this.pageID} 隱藏 Offcanvas`);
         let offcanvasElement = document.getElementById(this.pageID);
         let offcanvasInstance = bootstrap.Offcanvas.getInstance(offcanvasElement);
         offcanvasInstance.hide();
@@ -119,32 +117,68 @@ export class SubPage extends BasePage {
           }
           return cookieValue;
         }
-        console.log(`getCookie ${getCookie('csrftoken')}`);
+        // console.log(`getCookie ${getCookie('csrftoken')}`);
 
-        _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
-          bindSubSettingEvents();
-          window.csrf_token = getCookie('csrftoken');
-          console.log(`csrf_token ${window.csrf_token}`);
+        // _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
+        //   bindSubSettingEvents();
+        //   window.csrf_token = getCookie('csrftoken');
+        //   // console.log(`csrf_token ${window.csrf_token}`);
+        // });
+        console.log("腳本載入中...");
+        _self.checkAndLoadScript(_self.pageID, getCookie('csrftoken'), function() {
+          _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
+            bindSubSettingEvents();
+            // console.log(`csrf_token ${window.csrf_token}`);  
+          });
         });
-        
       })();
 
-      // this.loadScript();
     }
-  
-    // 動態載入 JS 檔案
-    // loadScript() {
-    //   const scriptUrl = `/static/scripts/${this.pageID}.js`;
-    //   const script = document.createElement('script');
 
-    //   script.type = 'text/javascript';
-    //   script.src = `${scriptUrl}?v=${new Date().getTime()}`;
-    //   document.head.appendChild(script);
-    //   console.log(`${this.pageID} 腳本已載入`);
-    //   bindSubSettingEvents();
-    // }
+    checkAndLoadScript(page_id, csrftoken, callback) {
+      let data = {
+        'page_id': page_id,
+      };
+
+      fetch(`/admin_app/loadscript/`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-CSRFToken': csrftoken
+        },
+        body: JSON.stringify(data) // 將資料轉換為 JSON 格式
+      })
+      .then(response => {
+        if (response.status === 200) {
+          callback();
+          console.log('腳本載入成功');
+        }
+        else {
+          console.log(`${page_id} Script load failed with status:`, response.status);
+        }
+      })
+      .catch(error => {
+        console.error(error);
+      });
+    }
 
     loadScript(url, callback) {
+      // 創建一個正則表達式來檢查不帶版本參數的腳本
+      let baseUrl = url.split('?')[0]; // 獲取基礎 URL，忽略 ? 之後的部分
+      console.log(baseUrl);
+      let existingScript = Array.from(document.querySelectorAll('script'))
+      .find(script => {
+        let scriptSrc = new URL(script.src, window.location.href).pathname; // 提取相對路徑
+        return scriptSrc === baseUrl; // 比較相對路徑是否相同
+      });
+
+      console.log(existingScript);
+
+      if (existingScript) {
+        console.log('腳本已經載入，直接返回');
+        existingScript.parentNode.removeChild(existingScript);
+      }
+
       let script = document.createElement('script');
       script.type = 'text/javascript';
       

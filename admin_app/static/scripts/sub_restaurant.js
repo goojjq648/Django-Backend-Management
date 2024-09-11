@@ -1,4 +1,7 @@
 function bindSubSettingEvents() {
+    if ($.fn.DataTable.isDataTable('#restaurant_table')) {
+        $('#restaurant_table').DataTable().destroy();
+    }
     // 表格的初始化及設置
     $(document).ready(function() {
         $('#restaurant_table').DataTable({
