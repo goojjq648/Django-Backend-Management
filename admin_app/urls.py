@@ -15,14 +15,17 @@ urlpatterns = [
     # 後台主頁面
     path('dashboard/', views.admin_mainPage, name='admin_dashboard'),
     path('loadscript/', views.check_dyamic_jsfile, name='loadscript'),
-    path('get_admin_setting/', system_setting.fetch_admin_setting_data, name='getadminsetting'),
-    path('confirm_editSetting/', system_setting.confirm_editSetting,
-         name='confirmeditSetting'),
     
     # 後台右側頁面
     path('getpagedata/', views.getpagedata, name='getpagedata'),
     
-    # 後台其他功能類頁面
+    # 系統設定 - 類別設定 
+    path('get_admin_setting/', system_setting.fetch_admin_setting_data, name='getadminsetting'),
+    path('selectType/', system_setting.admin_select_type, name='selectType'),
+    path('confirm_editSetting/', system_setting.confirm_editSetting, name='confirmeditSetting'),
+    path('confirm_deleteSetting/', system_setting.confirm_delete_mainType, name='confirmdeleteSetting'),
+
+
+    # 餐廳
     path('edit_restaurant/', restaurant_views.edit_restaurant_data, name='editrestaurant'),
-    path('selectType/', system_setting.admin_select_type, name='selectType')
 ]

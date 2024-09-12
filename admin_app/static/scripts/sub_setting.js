@@ -6,7 +6,10 @@ function bindSubSettingEvents() {
     
         if (event.target && event.target.id === 'admin_select') {
             // 處理選擇主類別的邏輯
-            // console.log(adminSelect.value);
+            if (adminSelect.value === '選擇主類別') {
+                return;
+            }
+
             let url = `/admin_app/selectType/?mainType=${adminSelect.value}`;
             let response = await fetch(url);
             let data = await response.json();
@@ -16,6 +19,15 @@ function bindSubSettingEvents() {
             
             if (form.classList.contains("d-none")) {
                 form.classList.remove("d-none");
+            }
+
+            var delete_btn = document.getElementById("confirm_delete_setting");
+            
+            if (adminSelect.value === 'addMainType') {
+                delete_btn.classList.add("d-none");
+            }
+            else {
+                delete_btn.classList.remove("d-none");
             }
 
             // 處理icon下拉列表取得列表資料
@@ -60,6 +72,8 @@ function bindSubSettingEvents() {
                 }
                 else
                 {
+                    document.getElementById('OrgInputMainTypeName').value = adminSelect.value;
+                    
                     // 處理類別的ICON
                     if (data['button_icon'])
                     {
@@ -79,6 +93,7 @@ function bindSubSettingEvents() {
             else{
                 
                 document.getElementById('admin_setting_action').value = adminSelect.value;
+                document.getElementById('InputMainTypeName').value = "";
 
                 removeIcon();
                 removeAllSubcategory();
@@ -131,6 +146,39 @@ function bindSubSettingEvents() {
       
           result.innerHTML = confirm_editsetting_data;
     });
+
+    //按下刪除按鈕
+    document.getElementById('confirm_delete_setting').addEventListener('click', async(event)=> {
+            let confirm_delete_mainType_url = `/admin_app/confirm_deleteSetting/`;
+            let del_main_type = document.querySelector('#OrgInputMainTypeName').value
+            let data = {
+                'mainType': del_main_type
+            }
+
+            const csrftoken = window.csrf_token;
+
+            let confirm_delete_setting_response = await fetch(confirm_delete_mainType_url,{
+                method:'POST',
+                headers:{
+                'X-CSRFToken': csrftoken,
+                'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+
+            let responsedata = await confirm_delete_setting_response.text();
+            
+            let result = document.querySelector('#div_edit_setting_result')  
+            
+            if (responsedata.success) {
+                    result.className = "alert alert-success mt-3"; // 成功變成綠色
+            } 
+            else {
+                    result.className = "alert alert-danger mt-3"; // 失敗變成紅色
+            }
+            
+            result.innerHTML = responsedata;
+        });
 }
 
 

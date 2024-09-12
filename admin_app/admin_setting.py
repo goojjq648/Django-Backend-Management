@@ -48,4 +48,8 @@ class AdminSetting:
         write_json_file(self.admin_setting_path, admin_list)
 
     def delete_admin_func_type_list(self, main_type):
-        pass
+        admin_list = self.__admin_func_type_list
+        if main_type in admin_list:
+            del admin_list[main_type]
+
+        write_json_file(self.admin_setting_path, admin_list)
