@@ -5,7 +5,6 @@ export class BasePage {
         this.active = false;
     }
 
-    // 可以覆寫的方法
     async loadPage() {
         const data = await this.fetchPageData();
         this.displayPage(data);
@@ -54,6 +53,27 @@ export class MainPage extends BasePage {
       }
     }
 
+    getActivePage() {
+      // 如果有子頁面
+      if (this.sub_page_list) { 
+        console.log(this.sub_page_list);
+        for (const subKey in this.sub_page_list) {
+          if (this.sub_page_list[subKey].active === true) {
+            console.log(this.sub_page_list[subKey]);
+            return this.sub_page_list[subKey];
+          }
+        }
+      }
+
+      // 如果沒有子頁面
+      if (this.active === true) {
+        return this;
+      }
+      else{
+        return null;
+      }
+    } 
+
     // loadSubPage
     async loadSubPage(subPageID) {
       if (this.sub_page_list) {
@@ -72,6 +92,7 @@ export class MainPage extends BasePage {
           if (this.sub_page_list[subKey].active === true)
           {
             this.sub_page_list[subKey].hidePage();
+            this.sub_page_list[subKey].unbindScript()
           }
         }
       }
@@ -94,6 +115,7 @@ export class MainPage extends BasePage {
 export class SubPage extends BasePage {
     constructor(pageID) {
       super(pageID);
+      this.bindScript = null;
     }
   
     // 重寫頁面載入邏輯，並動態載入對應的 JS
@@ -117,17 +139,12 @@ export class SubPage extends BasePage {
           }
           return cookieValue;
         }
-        // console.log(`getCookie ${getCookie('csrftoken')}`);
-
-        // _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
-        //   bindSubSettingEvents();
-        //   window.csrf_token = getCookie('csrftoken');
-        //   // console.log(`csrf_token ${window.csrf_token}`);
-        // });
+        
         console.log("腳本載入中...");
         _self.checkAndLoadScript(_self.pageID, getCookie('csrftoken'), function() {
           _self.loadScript(`/static/scripts/${_self.pageID}.js`, function() {
             bindSubSettingEvents();
+            window.csrf_token = getCookie('csrftoken');
             // console.log(`csrf_token ${window.csrf_token}`);  
           });
         });
@@ -163,24 +180,14 @@ export class SubPage extends BasePage {
     }
 
     loadScript(url, callback) {
-      // 創建一個正則表達式來檢查不帶版本參數的腳本
-      let baseUrl = url.split('?')[0]; // 獲取基礎 URL，忽略 ? 之後的部分
-      console.log(baseUrl);
-      let existingScript = Array.from(document.querySelectorAll('script'))
-      .find(script => {
-        let scriptSrc = new URL(script.src, window.location.href).pathname; // 提取相對路徑
-        return scriptSrc === baseUrl; // 比較相對路徑是否相同
-      });
-
-      console.log(existingScript);
-
-      if (existingScript) {
-        console.log('腳本已經載入，直接返回');
-        existingScript.parentNode.removeChild(existingScript);
+      if (this.bindScript) {
+        console.log(`腳本 ${url} 已經被載入過了，不再載入...`);
+        this.unbindScript(url);
       }
 
       let script = document.createElement('script');
       script.type = 'text/javascript';
+      // script.type = 'module';
       
       // 當腳本載入完成時，執行回調函數
       script.onload = function() {
@@ -190,6 +197,41 @@ export class SubPage extends BasePage {
       };
       
       script.src = url + '?v=' + new Date().getTime();
-      document.head.appendChild(script);
+      // script.src = url;
+      this.bindScript = script;
+      document.body.appendChild(script);
+    }
+
+    unbindScript(url) {
+      // // 創建一個正則表達式來檢查不帶版本參數的腳本
+      // let baseUrl = url.split('?')[0]; // 獲取基礎 URL，忽略 ? 之後的部分
+      // console.log(baseUrl);
+      // let existingScript = Array.from(document.querySelectorAll('script'))
+      // .find(script => {
+      //   let scriptSrc = new URL(script.src, window.location.href).pathname; // 提取相對路徑
+      //   return scriptSrc === baseUrl; // 比較相對路徑是否相同
+      // });
+
+      // console.log(existingScript);
+
+      // if (existingScript) {
+      //   console.log('腳本已經載入，直接返回');
+      //   existingScript.parentNode.removeChild(existingScript);
+      // }
+      if (this.bindScript === null) {
+        return;
+      }
+
+      let existingScript = Array.from(document.querySelectorAll('script'))
+      .find(script => {
+        let scriptSrc = new URL(script.src, window.location.href).pathname;
+        return this.bindScript.src === script.src; // 比較相對路徑是否相同
+      });
+      
+      if (existingScript) {
+        console.log('腳本已經載入，直接返回');
+        existingScript.parentNode.removeChild(existingScript);
+        this.bindScript = null;
+      }
     }
 }
