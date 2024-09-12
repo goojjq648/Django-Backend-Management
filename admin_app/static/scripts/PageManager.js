@@ -36,4 +36,11 @@ export class PageManager {
         await this.currentPage.loadPage();
       }
     }
+
+    async refreshPage() {
+      let current_activePage = this.currentPage.getActivePage()
+      if (current_activePage !== null) {
+        await current_activePage.loadPage();
+      }
+    }
 }

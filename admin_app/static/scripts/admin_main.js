@@ -35,6 +35,8 @@ async function init() {
 
 init();
 
+window.pagemanager = page_manager;
+
 var currentType = null;
 
 // 主類型按鈕切換
