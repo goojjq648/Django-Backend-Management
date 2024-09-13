@@ -1,5 +1,7 @@
-let subcategoryIndex = 0;
+var subcategoryIndex = 0;
 function bindSubSettingEvents() {
+    setSubcategoryIndex(0);
+
     // 選擇主類別
     const adminSelect = document.getElementById('admin_select');
     adminSelect.addEventListener('change', async (event)=> {
@@ -79,19 +81,20 @@ function bindSubSettingEvents() {
                     {
                         selectIcon(data['button_icon']);
                     }
-                    
+
                     // 處理子類別
-                    subcategoryIndex = 0;
-                    for (let key in data['sub_detail']) {
-                        //console.log(`${key}: ${data['sub_detail'][key]}`);
-                        addSubcategory(key, data['sub_detail'][key], subcategoryIndex);
-                        subcategoryIndex++;
+                    if (data['sub_detail'] && Object.keys(data['sub_detail']).length > 0){
+                        // subcategoryIndex = Object.keys(data['sub_detail']).length + 1;
+                        for (let key in data['sub_detail']) {
+                            console.log(`${key}: ${data['sub_detail'][key]}`);
+                            addSubcategory(key, data['sub_detail'][key]);
+                        }
                     }
 
                 }
             }
             else{
-                
+                setSubcategoryIndex(0);
                 document.getElementById('admin_setting_action').value = adminSelect.value;
                 document.getElementById('InputMainTypeName').value = "";
 
@@ -114,8 +117,7 @@ function bindSubSettingEvents() {
         const subcategoryID = document.querySelector('#InputSubTypeID').value;
         const subcategoryName = document.querySelector('#InputSubTypeName').value;
         
-        addSubcategory(subcategoryID, subcategoryName, subcategoryIndex);
-        subcategoryIndex++;
+        addSubcategory(subcategoryID, subcategoryName);
     });
 
     //按下確認按鈕
@@ -182,9 +184,11 @@ function bindSubSettingEvents() {
 }
 
 
-function addSubcategory(sub_ID, sub_name, idx) {
+function addSubcategory(sub_ID, sub_name) {
     const container = document.getElementById('subcategory-container');
     const newSubcategory = document.createElement('div');
+
+    let idx = getsubcategoryIndex();
 
     newSubcategory.setAttribute('class', 'subcategory-item');
     newSubcategory.setAttribute('id', `subcategory-${idx}`);
@@ -204,15 +208,45 @@ function addSubcategory(sub_ID, sub_name, idx) {
     `;
     
     container.appendChild(newSubcategory);
+    idx++;
 
     // 設定子類別索引
+    setSubcategoryIndex(idx);
+}
+
+function getsubcategoryIndex() {
+    return subcategoryIndex;
+}
+
+function setSubcategoryIndex(idx) {
+    if (idx < 0) {
+        idx = 0;
+    }
+
     document.getElementById('subcategory_Idx').value = idx;
+    console.log(idx);
+    subcategoryIndex = idx;
 }
 
 // 移除子類別
 function removeSubcategory(index) {
     const subcategory = document.getElementById(`subcategory-${index}`);
     subcategory.remove();
+
+    // 重新排序剩下的子類別
+    const subcategoryItems = document.querySelectorAll('.subcategory-item');
+    subcategoryItems.forEach((item, idx) => {
+        item.setAttribute('id', `subcategory-${idx}`);
+        
+        let sub_field_ID = item.querySelector(`input[name^="subcategories"][name$="[id]"]`);
+        let sub_field_name = item.querySelector(`input[name^="subcategories"][name$="[name]"]`);
+
+        sub_field_ID.name = `subcategories[${idx}][id]`;
+        sub_field_name.name = `subcategories[${idx}][name]`;
+    });
+
+    // 設定子類別索引
+    setSubcategoryIndex(subcategoryItems.length);
 }
 
 // 移除所有子類別
@@ -221,6 +255,7 @@ function removeAllSubcategory() {
     while (subcategoryContainer.firstChild) {
         subcategoryContainer.removeChild(subcategoryContainer.firstChild);
     }
+    setSubcategoryIndex(0);
 }
 
 function selectIcon(iconId) {
