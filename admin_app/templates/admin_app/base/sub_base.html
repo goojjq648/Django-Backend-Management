@@ -1,0 +1,60 @@
+<h3>{{ sub_title }}</h3>
+<hr>
+<div class="card shadow">
+    <div class="card-header py-3 mb-4" style="border-top: 0.25rem solid #708ee9 !important;">
+        {% block card_header %}
+        {% endblock %}
+    </div>
+    <div class="card-body">
+        {% block table_section %}
+            <div class="table-responsive">
+                <table class="table table-bordered" id="{% block table_id %} default_table {% endblock %}" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            {% block field_head %}
+                            {% endblock %}
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            {% block field_foot %}
+                            {% endblock %}
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                    {% block table_content %}
+                    {% endblock %}
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        {% endblock %}
+
+        {% block form %}
+        {% endblock %}
+    </div>
+  </div>
+
+    <!-- 彈跳表單 -->
+{% block hidden_modal_section %}
+    <div class="modal modal-lg fade " id="{% block formmodal_id %}{% endblock %}" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="formModalLabel">{% block modal_title %}{% endblock %}</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- 表單內容 -->
+              <form id="{% block modal_form_id %}default_modal_form{% endblock %}">
+                {% block modal_form_block %}
+                {% endblock %}
+              </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+            </div>
+          </div>
+        </div>
+    </div>
+{% endblock %}    
