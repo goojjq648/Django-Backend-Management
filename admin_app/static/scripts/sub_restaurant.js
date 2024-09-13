@@ -1,37 +1,18 @@
 function bindSubSettingEvents() {
-    if ($.fn.DataTable.isDataTable('#restaurant_table')) {
-        $('#restaurant_table').DataTable().destroy();
-    }
-    // 表格的初始化及設置
-    $(document).ready(function() {
-        $('#restaurant_table').DataTable({
-            dom: 'Blfrtip',
-            autoWidth: false,  // 禁用自動寬度調整
-            columnDefs: [
-                { width: '5%', targets: 0 },   // 第一列 (編號)
-                { width: '15%', targets: 1 },  // 第二列 (餐廳名稱)
-                { width: '5%', targets: 2 },   // 第三列 (評分)
-                { width: '10%', targets: 3 },   // 第四列 (評論數)
-                { width: '20%', targets: 4 },  // 第五列 (地址)
-                { width: '10%', targets: 5 },  // 第六列 (平均消費)
-                { width: '15%', targets: 6 },  // 第七列 (營業時間)
-                { width: '5%', targets: 7 },   // 第八列 (緯度)
-                { width: '5%', targets: 8 },   // 第九列 (經度)
-                { width: '10%', targets: 9 },  // 第十列 (圖片網址)
-                { width: '15%', targets: 10 }  // 第十一列 (選項)
-            ],
-            language: {
-                url: 'https://cdn.datatables.net/plug-ins/2.1.5/i18n/zh-HANT.json',
-            },
-            // 預設每頁顯示 5 筆資料
-            pageLength : 5,
-            // 使用者可以選擇每頁顯示 5、10、25、50 或 100 筆
-            lengthMenu : [[5, 10, 25, 50, 100], [5, 10, 25, 50, 100]],
-            buttons: [
-                'copy', 'csv', 'excel'
-            ]
-            
-        });
+    DataTableModule.init('#restaurant_table', {
+        columnDefs: [
+            { width: '5%', targets: 0 },   // 第一列 (編號)
+            { width: '15%', targets: 1 },  // 第二列 (餐廳名稱)
+            { width: '5%', targets: 2 },   // 第三列 (評分)
+            { width: '10%', targets: 3 },   // 第四列 (評論數)
+            { width: '20%', targets: 4 },  // 第五列 (地址)
+            { width: '10%', targets: 5 },  // 第六列 (平均消費)
+            { width: '15%', targets: 6 },  // 第七列 (營業時間)
+            { width: '5%', targets: 7 },   // 第八列 (緯度)
+            { width: '5%', targets: 8 },   // 第九列 (經度)
+            { width: '10%', targets: 9 },  // 第十列 (圖片網址)
+            { width: '15%', targets: 10 }  // 第十一列 (選項)
+        ]       
     });
 
     document.querySelectorAll('.edit-btn').forEach(button =>{
