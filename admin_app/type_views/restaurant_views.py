@@ -11,7 +11,7 @@ def edit_restaurant_data(request):
 
 
 def restaurant(request):
-    title = '餐廳資料'
+    sub_title = '餐廳資料'
     fields = ['編號', '餐廳名稱', '評分', '評論數', '地址',
               '平均消費', '營業時間', '緯度', '經度', '圖片網址', '選項']
 
