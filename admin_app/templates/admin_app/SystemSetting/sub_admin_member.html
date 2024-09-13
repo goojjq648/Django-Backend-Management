@@ -1,7 +1,9 @@
+<h3>{{ title }}</h3>
+<hr>
 <div class="card shadow">
     <div class="card-header py-3 mb-4" style="border-top: 0.25rem solid #708ee9 !important;">
         <h6 class="m-0 font-weight-bold text-primary">
-          <button type="button" class="btn btn-primary edit-btn" id="admin_member_add" data-bs-toggle="modal" data-bs-target="#formModal">新增後台會員資料</button>
+          <button type="button" class="btn btn-primary edit-btn" id="admin_member_add" data-bs-toggle="modal" data-bs-target="#admin_member_formModal">新增後台會員資料</button>
         </h6>
     </div>
     <div class="card-body">
@@ -24,10 +26,14 @@
                 <tbody>
                     {% for user in users %}
                       <tr data-id="{{ user.id }}">
+                          <td>{{ user.id }}</td>
                           <td>{{ user.username }}</td>
                           <td>{{ user.email }}</td>
+                          <td>{{ user.is_staff }}</td>
+                          <td>{{ user.is_superuser }}</td>
+                          <td>{{ user.is_active }}</td>
                           <td>
-                              <button type="button" class="btn btn-primary edit-btn" id="user_edit_{{user.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
+                              <button type="button" class="btn btn-primary edit-btn" id="user_edit_{{user.id}}" data-bs-toggle="modal" data-bs-target="#admin_member_formModal">修改</button>
                               <p> </p>
                               <button type="button" class="btn btn-danger" id="user_delete_{{user.id}}">刪除</button>
                           </td>
@@ -37,5 +43,61 @@
               </table>
             </div>
         </div>
+    </div>
+  </div>
+
+  <!-- 彈跳視窗(修改表單) -->
+  <div class="modal modal-lg fade " id="admin_member_formModal" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModalLabel">編輯{{ title }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- 表單內容 -->
+          <form id="admin_member_form">
+            <input type="hidden" id="admin_member_ID" name="admin_member_ID" value="">
+            <div class="mb-3">
+              <label for="InputAdmin_memberName" class="form-label">帳號</label>
+              <input type="text" class="form-control" id="InputAdmin_memberName" name="admin_member_name">
+            </div>
+            <div class="mb-3">
+              <label for="InputAdmin_memberEmail" class="form-label">電子郵件</label>
+              <input type="text" class="form-control" id="InputAdmin_memberEmail" name="admin_member_email">
+            </div>
+            <div class="mb-3">
+              <label for="InputAdminPassword" class="form-label">密碼</label>
+              <input type="password" name="admin_member_password" class="form-control" id="InputAdminPassword">              
+            </div>
+            <div class="mb-3">
+              <label for="InputAdminPassword" class="form-label">密碼確認</label>
+              <input type="password" name="admin_member_password_confirm" class="form-control" id="InputAdminPassword_confirm">
+              <div id="alert_checkpassword" class="text-success"></div>
+            </div>
+              <div class="mb-3">
+                <label for="InputAdmin_memberEmail" class="form-label">啟用超級管理員狀態(0:否 1:是)</label>
+                <input type="text" class="form-control" id="InputAdmin_member_issuper" name="admin_member_rating"
+                {% if user.is_superuser %} value="1" readonly {% else %} value="0" readonly {% endif %}>
+              </div>
+
+              <div class="p-3 m-0 border-0 bd-example m-0 border-0">
+                <div class="alert alert-primary d-flex align-items-center" role="alert" id="div_alert_create_user">
+                  <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:">
+                    <use xlink:href="#info-fill"/>
+                  </svg>
+                  <div id="alert_create_user">
+                    An example alert with an icon
+                  </div>
+                </div>
+              </div>
+
+            <button type="submit" class="btn btn-primary" id="button_create_user" onclick="return confirm('確定要修改?')">確認</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+        </div>
+      </div>
     </div>
   </div>

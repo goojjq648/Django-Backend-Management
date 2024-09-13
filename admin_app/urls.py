@@ -4,6 +4,7 @@ from . import views
 
 from .type_views import restaurant_views
 from .type_views import system_setting_views as system_setting
+from .type_views import admin_user_views as admin_user
 
 app_name = 'admin_app'
 urlpatterns = [
@@ -25,6 +26,8 @@ urlpatterns = [
     path('confirm_editSetting/', system_setting.confirm_editSetting, name='confirmeditSetting'),
     path('confirm_deleteSetting/', system_setting.confirm_delete_mainType, name='confirmdeleteSetting'),
 
+    # 後臺會員
+    path('create_admin_member/', admin_user.create_admin_member, name='create_user'),
 
     # 餐廳
     path('edit_restaurant/', restaurant_views.edit_restaurant_data, name='editrestaurant'),

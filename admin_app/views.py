@@ -45,7 +45,7 @@ def getpagedata(request):
 
 def check_dyamic_jsfile(request):
     if request.method == 'POST':
-        print(request.body)
+        # print(request.body)
         body_unicode = request.body.decode('utf-8') 
         body_data = json.loads(body_unicode)
         
