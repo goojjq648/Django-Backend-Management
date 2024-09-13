@@ -1,6 +1,7 @@
 from admin_app.admin_setting import AdminSetting
 from django.http import HttpResponse, JsonResponse, FileResponse
 from django.shortcuts import render
+import json
 
 def fetch_admin_setting_data(request):
     data = get_admin_setting().get_admin_func_type_list()
@@ -19,6 +20,7 @@ def sub_setting(request, admin_list, mainType):
 def confirm_editSetting(request):
     select_action = request.POST.get('admin_setting_action')
     main_type = request.POST.get('name')
+        
     if not main_type:
         return HttpResponse('沒有填寫主類別名稱') 
     
@@ -46,9 +48,21 @@ def confirm_editSetting(request):
     get_admin_setting().edit_admin_func_type_list(main_type, button_icon, sublist)
     
     if select_action == 'addMainType':
-        return HttpResponse('新增成功')
+        return HttpResponse('新增成功，請重新整理頁面')
     else:
-        return HttpResponse('修改成功')
+        return HttpResponse('修改成功，請重新整理頁面')
+    
+
+def confirm_delete_mainType(request):
+    if request.method == 'POST':
+        body_unicode = request.body.decode('utf-8') 
+        body_data = json.loads(body_unicode)
+        
+        mainType = body_data.get('mainType')
+
+        get_admin_setting().delete_admin_func_type_list(mainType)
+
+    return HttpResponse('刪除成功，請重新整理頁面')
 
 def admin_select_type(request):
     mainType = request.GET.get('mainType')
