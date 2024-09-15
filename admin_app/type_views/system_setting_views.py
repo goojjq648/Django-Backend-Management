@@ -19,10 +19,11 @@ def retrieve_admin_setting_data():
 
 
 def sub_setting(request, admin_list, mainType):
-    return render(request, 'admin_app/SystemSetting/sub_setting.html', {'admin_list': admin_list, 'mainType': mainType})
+    sub_title = '設定類別'
+    return render(request, 'admin_app/SystemSetting/sub_setting.html', {'sub_title': sub_title, 'admin_list': admin_list, 'mainType': mainType})
 
 
-def confirm_editSetting(request):    
+def confirm_editSetting(request):
     select_action = request.POST.get('admin_setting_action')
     main_type = request.POST.get('name')
     orgin_main_type = request.POST.get('OrgInputMainTypeName')

@@ -8,7 +8,7 @@ def get_admin_users_manager():
 
 
 def sub_admin_member(request):
-    title = '使用者資料'
+    sub_title = '使用者資料'
     fields = ['編號', '帳號', '電子郵件', '是否為後台員工', '是否為超級管理員', '帳號是否啟動']
     user_manager = get_admin_users_manager()
     users = user_manager.get_all_users()
