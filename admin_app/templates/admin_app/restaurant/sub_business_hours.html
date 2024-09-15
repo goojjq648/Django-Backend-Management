@@ -24,12 +24,14 @@
                   </tr>
               </tfoot>
               <tbody>
-                {% for restaurant in restaurantDatas %}
+                {% for bussinessdata in restaurantDatas %}
                     <tr>
-                        <td>{{ restaurant.id }}</td>
-                        <td>{{ restaurant.day_of_week }}</td>
-                        <td>{{ restaurant.open_time }}</td>
-                        <td>{{ restaurant.close_time }}</td>
+                        <td>{{ bussinessdata.id }}</td>
+                        <td>{{ bussinessdata.restaurant.name }}</td>
+                        <td>{{ bussinessdata.restaurant.opening_hours }}</td>
+                        <td>{{ bussinessdata.day_of_week }}</td>
+                        <td>{{ bussinessdata.open_time }}</td>
+                        <td>{{ bussinessdata.close_time }}</td>
                     </tr>
                 {% endfor %}
               </tbody>

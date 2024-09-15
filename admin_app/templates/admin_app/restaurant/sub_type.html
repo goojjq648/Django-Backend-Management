@@ -1,39 +1,36 @@
-<!-- orders_table.html -->
-<h3>{{ title }}</h3>
-<hr>
+{% extends 'admin_app/base/sub_base.html' %}
 
-<div class="card shadow mb-4">
-  <div class="card-header py-3">
-      <h6 class="m-0 font-weight-bold text-primary">DataTables Data</h6>
-  </div>
-  <div class="card-body">
-      <div class="table-responsive">
-          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-              <thead>
-                  <tr>
-                    {% for fieldName in fields %}
-                      <th>{{ fieldName }}</th>
-                    {% endfor %}
-                  </tr>
-              </thead>
-              <tfoot>
-                  <tr>
-                    {% for fieldName in fields %}
-                      <th>fieldName</th>
-                    {% endfor %}
-                  </tr>
-              </tfoot>
-              <tbody>
-                {% for restaurant in restaurantDatas %}
-                    <tr>
-                        <td>{{ restaurant.id }}</td>
-                        <td>{{ restaurant.name }}</td>
-                    </tr>
-                {% endfor %}
-              </tbody>
-            </table>
-          </div>
-      </div>
-  </div>
+{% block card_header %}
+<!-- 新增按鈕 -->
+<h6 class="m-0 font-weight-bold text-primary">
+  <button type="button" class="btn btn-primary edit-btn" id="restaurant_add_category" data-bs-toggle="modal" data-bs-target="#Restaurantcategory_formModal">新增{{ sub_title }}</button>
+</h6>
+{% endblock %}
 
-</div>
+{% block table_id %}restaurant_category_table{% endblock %}
+
+{% block field_head %}
+    {% for fieldName in fields %}
+        <th>{{ fieldName }}</th>
+    {% endfor %}
+{% endblock %}
+
+{% block field_foot %}
+    {% for fieldName in fields %}
+        <th>{{ fieldName }}</th>
+    {% endfor %}
+{% endblock %}
+
+{% block table_content %}
+    {% for restaurant in restaurantDatas %}
+      <tr data-id="{{ restaurant.id }}">
+          <td>{{ restaurant.id }}</td>
+          <td>{{ restaurant.name }}</td>
+          <td>
+            <button type="button" class="btn btn-primary edit-btn" id="restaurant_edit_{{restaurant.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
+            <p> </p>
+            <button type="button" class="btn btn-danger" id="restaurant_delete_{{restaurant.id}}">刪除</button>
+        </td>
+      </tr>
+    {% endfor %}
+{% endblock %}

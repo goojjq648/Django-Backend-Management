@@ -54,17 +54,20 @@
 {% block modal_form_id %}restaurant_form{% endblock %}
 
 {% block modal_form_block %}
-<div class="mb-3">
+  <div class="mb-3" id ="Div_InputRestaurantID">
     <label for="InputRestaurantID" class="form-label">編號</label>
     <input type="text" class="form-label" id="InputRestaurantID" name="restaurant_id" value="" readonly>
+    <input type="hidden" id="restaurant_action" name="restaurant_action" value="">
   </div>
   <div class="mb-3">
     <label for="InputRestaurantName" class="form-label">餐廳名稱</label>
     <input type="text" class="form-control" id="InputRestaurantName" name="restaurant_name">
+    <div id="alert_restaurant_name" class="text-danger d-none">餐廳名稱不能為空！</div>
   </div>
   <div class="mb-3">
     <label for="InputRestaurantRating" class="form-label">評分</label>
     <input type="text" class="form-control" id="InputRestaurantRating" name="restaurant_rating">
+    <div id="alert_restaurant_rating" class="text-danger d-none">評分必須在0到5之間！</div>
   </div>
   <div class="mb-3">
     <label for="InputRestaurantReviewCount" class="form-label">評論數</label>
@@ -79,16 +82,19 @@
     <input type="text" class="form-control" id="InputRestaurantAverageSpending" name="restaurant_average_spending">
   </div>
   <div class="mb-3">
-    <label for="InputRestaurantBusinessHours" class="form-label">營業時間</label>
+    <label for="InputRestaurantBusinessHours" class="form-label">營業時間(JSON格式)</label>
     <input type="text" class="form-control" id="InputRestaurantBusinessHours" name="restaurant_business_hours">
+    <div id="alert_restaurant_business_hours" class="text-danger d-none">營業時間必須是有效的 JSON 格式！</div>
   </div>
   <div class="mb-3">
     <label for="InputRestaurantLatitude" class="form-label">緯度</label>
     <input type="text" class="form-control" id="InputRestaurantLatitude" name="restaurant_latitude">
+    <div id="alert_restaurant_latitude" class="text-danger d-none">緯度必須在 -90 到 90 之間！</div>
   </div>
   <div class="mb-3">
     <label for="InputRestaurantLongitude" class="form-label">經度</label>
     <input type="text" class="form-control" id="InputRestaurantLongitude" name="restaurant_longitude">
+    <div id="alert_restaurant_longitude" class="text-danger d-none">經度必須在 -180 到 180 之間！</div>
   </div>
   <div class="mb-3">
     <label for="InputRestaurantImageUrl" class="form-label">圖片網址</label>
