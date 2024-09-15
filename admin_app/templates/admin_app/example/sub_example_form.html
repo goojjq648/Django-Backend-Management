@@ -1,0 +1,41 @@
+{% extends 'admin_app/base/sub_base.html' %}
+
+{% block card_header %}
+<h3>範例表單</h3>
+{% endblock %}
+
+{% block table_section %}
+{% endblock %}
+
+{% block form_section %}
+<form id="example_form">
+    <input type="hidden" id="admin_setting_action" name="admin_setting_action" value="">
+
+    <div class="mb-3">
+        <label for="InputExampleName" class="form-label">範例1</label>
+        <input type="text" class="form-label" id="InputExampleName" name="example1"/>
+    </div>
+    <div class="mb-3">
+        <label for="InputExampleEmail" class="form-label">範例1</label>
+        <input type="text" class="form-control" id="InputExampleEmail" name="example2">
+    </div>
+    <div class="mb-3">
+        <label for="InputExamplePassword" class="form-label">密碼</label>
+        <input type="password" name="example3" class="form-control" id="InputExamplePassword">              
+    </div>
+    <div class="mb-3">
+        <label for="InputExamplePasswordConfirm" class="form-label">密碼確認</label>
+        <input type="password" name="example4" class="form-control" id="InputExamplePasswordConfirm"">
+    </div>
+
+    <button type="submit" class="btn btn-primary" id="confirm_example_form">確定</button>
+    <button type="button" class="btn btn-danger" id="confirm_delete__example_form">刪除</button>
+    
+    <div id="example_result" class="alert alert-info mt-3"></div>
+</form>
+{% endblock %}
+
+<!-- 以下為彈跳表單區域 -->
+<!-- 不處理-->
+{% block hidden_modal_section %}
+{% endblock %}

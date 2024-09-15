@@ -1,0 +1,40 @@
+{% extends 'admin_app/base/sub_base.html' %}
+
+{% block card_header %}
+    <!-- 新增按鈕 -->
+    <h6 class="m-0 font-weight-bold text-primary">
+        <button type="button" class="btn btn-primary edit-btn" id="restaurant_add" data-bs-toggle="modal" data-bs-target="#Example_formModal">彈跳表單範例</button>
+    </h6>
+{% endblock %}
+
+<!-- 不處理 -->
+{% block table_section %}
+{% endblock %}
+
+{% block form_section %}
+{% endblock %}
+
+<!-- 以下為彈跳表單區域 -->
+{% block formmodal_id %}Example_formModal{% endblock %}
+
+{% block modal_title %}
+    彈跳表單範例
+{% endblock %}
+
+{% block modal_form_id %}ExampleModal_form{% endblock %}
+
+{% block modal_form_block %}
+  <div class="mb-3">
+    <label for="InputExampleName" class="form-label">範例1</label>
+    <input type="text" class="form-label" id="InputExampleName" name="" value="" readonly>
+  </div>
+  <div class="mb-3">
+    <label for="InputExampleName2" class="form-label">範例2</label>
+    <input type="text" class="form-control" id="InputExampleName2" name="">
+  </div>
+  <div class="mb-3">
+    <label for="InputExampleName3" class="form-label">範例3</label>
+    <input type="text" class="form-control" id="InputExampleName3" name="">
+  </div>
+  <button type="submit" class="btn btn-primary" id="button_example_Submit" onclick="return confirm('真的要修改嗎?')">確認</button>
+{% endblock %}

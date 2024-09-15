@@ -40,6 +40,13 @@ def getpagedata(request):
             return system_setting.sub_setting(request, admin_list, None)
         case 'sub_admin_member':
             return admin_user.sub_admin_member(request)
+        case 'sub_example_table':
+            return render(request, 'admin_app/example/sub_example_table.html')
+        case 'sub_example_modal':
+            return render(request, 'admin_app/example/sub_example_modal.html')
+        case 'sub_example_form':
+            return render(request, 'admin_app/example/sub_example_form.html')
+        
 
     return render(request, 'admin_app/other/404.html')
 
