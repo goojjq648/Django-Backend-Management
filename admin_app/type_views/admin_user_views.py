@@ -36,9 +36,8 @@ def create_admin_member(request):
 
     if action == True:
         user_manager = get_admin_users_manager()
-        # response['action'], response['message'] = user_manager.create_user(
-            # username, email, password)
-        response['action'], response['message'] = True, '新增成功'
+        response['action'], response['message'] = user_manager.create_user(
+            username, email, password)
 
     else:
         response['action'] = action
