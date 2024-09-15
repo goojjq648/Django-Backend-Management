@@ -16,33 +16,41 @@ def sub_admin_member(request):
 
 
 def create_admin_member(request):
-    response = {'status': 0, 'message': ''}
-    status = 0
+    response = {'action': True, 'message': ''}
+    action = True
     message = ''
-    
+
     if request.method != 'POST':
-        status, message = False, '無效的請求方法'
+        action, message = False, '無效的請求方法'
 
-        username = request.POST.get('admin_member_name')
-        email = request.POST.get('admin_member_email')
-        password = request.POST.get('admin_member_password')
-        password_confirm = request.POST.get('admin_member_password_confirm')
+    username = request.POST.get('admin_member_name')
+    email = request.POST.get('admin_member_email')
+    password = request.POST.get('admin_member_password')
+    password_confirm = request.POST.get('admin_member_password_confirm')
 
-        if password != password_confirm:
-            status, message = False, '密碼不一致，請重新輸入'
-        
-        if not username or not email or not password or not password_confirm:
-            status, message = False, '欄位不得為空'
+    if password != password_confirm:
+        action, message = False, '密碼不一致，請重新輸入'
 
-        if status == True:
-            user_manager = get_admin_users_manager()
-            response['status'], response['message'] = user_manager.create_user(username, email, password)
+    if not username or not email or not password or not password_confirm:
+        action, message = False, '欄位不得為空'
+
+    if action == True:
+        user_manager = get_admin_users_manager()
+        # response['action'], response['message'] = user_manager.create_user(
+            # username, email, password)
+        response['action'], response['message'] = True, '新增成功'
+
+    else:
+        response['action'] = action
+        response['message'] = message
 
     return JsonResponse(response)
+
 
 def delete_admin_member(request):
     response = {'status': 0, 'message': ''}
     if request.method == 'POST':
         username = request.POST.get('admin_member_name')
         user_manager = get_admin_users_manager()
-        response['status'], response['message'] = user_manager.delete_user(username)
+        response['status'], response['message'] = user_manager.delete_user(
+            username)

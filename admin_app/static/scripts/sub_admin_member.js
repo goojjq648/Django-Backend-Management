@@ -9,36 +9,39 @@ function bindSubSettingEvents() {
     document.querySelector('#button_create_user').addEventListener('click', async(event)=> {
             event.preventDefault();
             let url = '/admin_app/create_admin_member/';
-            let add_member_form_data = new FormData(document.querySelector('#admin_member_form'));
-            let response = await fetch(url, {
-                method: 'POST',
-                body: add_member_form_data,
-                headers: {
-                    'X-CSRFToken': window.csrf_token
-                }
-            });
 
-            let data = await response.json();
             let result_container = document.querySelector('#div_alert_create_user')  
             let result = document.querySelector('#alert_create_user')  
 
-            if (data.status) {
-                alert(data.message);
-                let myModal = document.getElementById('admin_member_formModal');
-                let modal = bootstrap.Modal.getInstance(myModal);
-
-                modal.hide();
-
-                myModalElement.addEventListener('hidden.bs.modal', function () {
-                    // 在 Modal 完全關閉後執行頁面刷新
-                    window.pagemanager.refreshPage();
+            try{
+                utilsModule.submitFormAndCloseModal('#admin_member_form', 'admin_member_formModal', url, 
+                function() {
+                    // console.log('模態框已關閉，頁面正在刷新');
+                }, 
+                function() {
+                    // console.log('失敗');
+                },
+                responseType = 'json',true, false)
+                .then(response => {
+                    // console.log('表單提交成功，返回資料:');
+                    if (response.data.action === true) 
+                    {
+                        alert(response.data.message);
+                        utilsModule.closeModal('admin_member_formModal', window.pagemanager.refreshPage());
+                    }
+                    else{
+                        // result_container.className = "alert alert-danger d-flex align-items-center"; // 失敗變成紅色
+                        // result.innerHTML = response.data.message;
+                        utilsModule.showAlert('div_alert_create_user_info', 'error', response.data.message);
+                    }
+                })
+                .catch(error => {
+                    console.error('表單提交失敗，錯誤:', error);
                 });
-            } 
-            else {
-                result_container.className = "alert alert-danger d-flex align-items-center"; // 失敗變成紅色
-                result.innerHTML = data.message;
             }
-            
+            catch(error){
+                console.error('Fetch error:', error);
+            }           
 
         });
 }

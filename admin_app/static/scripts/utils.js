@@ -1,5 +1,97 @@
 var utilsModule = (function() {
 /**
+ * 驗證一個欄位是否包含有效的 JSON 格式。
+ *
+ * @param {string} inputValue - 欄位的值（字符串）。
+ * @returns {boolean} - 如果是有效的 JSON 格式則返回 true，否則返回 false。
+ */
+function isValidJSON(inputValue) {
+    try {
+        JSON.parse(inputValue); 
+        return true;  // 如果解析成功，則返回 true
+    } catch (e) {
+        return false;  // 如果解析失敗，則返回 false
+    }
+}
+
+/**
+ * 關閉模態框。
+ *
+ * @param {string} modalID - 模態框的 ID。
+ * @param {function} [closeCallback] - 模態框關閉時要執行的回呼函數。
+ */
+function closeModal(modalID, closeCallback) {
+    let modalElement = document.getElementById(modalID);
+    let modalInstance = bootstrap.Modal.getInstance(modalElement);
+    modalInstance.hide();
+
+    modalElement.addEventListener('hidden.bs.modal', function () {
+        if (typeof closeCallback === 'function') {
+            closeCallback();
+        }
+    }); 
+}
+
+/**
+ * 顯示alert。
+ *
+ * @param {string} id - alert 的 ID。
+ * @param {string} status - alert 的狀態，可以是 'success', 'error', 或 'warning'。
+ * @param {string} message - alert 的訊息。
+ */
+
+function showAlert(id, status, message) {
+    const resultContainer = document.querySelector(`#${id}`);
+    if (!resultContainer) {
+        console.error(`未找到 ID 為 ${id} 的元素`);
+        return;
+    }
+    
+    const result = document.createElement('div');
+    // 定義不同狀態對應的樣式和圖標
+    let alertClass, icon, display;
+
+    switch (status) {
+        case 'success':
+            alertClass = 'alert-success';
+            icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>';
+            display = '成功';
+            break;
+        case 'error':
+            alertClass = 'alert-danger';
+            icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Error:"><use xlink:href="#exclamation-triangle-fill"/></svg>';
+            display = '失敗';
+            break;
+        case 'warning':
+            alertClass = 'alert-warning';
+            icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Warning:"><use xlink:href="#exclamation-fill"/></svg>';
+            display = '警告';
+            break;
+        default:
+            alertClass = 'alert-info';
+            icon = '<svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>';
+            display = '信息';
+    }
+
+    // 更新警報內容
+    result.className = `alert ${alertClass} d-flex align-items-center`;
+    result.innerHTML = `${icon}<strong>${display}:</strong> ${message}`;
+
+    // 將生成的警報添加到指定的容器中
+    resultContainer.innerHTML = ''; // 清空之前的內容
+    resultContainer.appendChild(result);
+    
+    // 顯示警報框
+    resultContainer.classList.remove('d-none');
+    
+    // 自動隱藏警報框（可選）
+    setTimeout(() => {
+        resultContainer.classList.add('d-none');
+    }, 5000); // 5 秒後隱藏
+}
+
+
+/**
  * 執行一個帶有 loading 圖示的異步 fetch 請求。
  * 在請求開始時顯示 loading，完成或發生錯誤時隱藏 loading 圖示。
  * 
@@ -84,17 +176,25 @@ var utilsModule = (function() {
  * @param {function} [successCallback] - 在模態框完全關閉後執行的回調函數，可選。
  * @param {function} [failedCallback] - 在getData失敗後執行的回調函數，可選。
  * @param {string} [responseType='json'] - 回應的類型，'json' 或 'text'，預設為 'json'。
+ * @param {boolean} [showLoading=true] - 是否顯示 loading 畫面，預設為 true。
+ * @param {boolean} [iscloseModal=true] - 是否關閉模態框，預設為 true。
  * @returns {Promise<{data: any, status: number}>} - 返回包含資料和 HTTP 狀態碼的 Promise。
  * 
  * @example
  * submitFormAndCloseModal('#admin_member_form', 'admin_member_formModal', '/admin_app/create_admin_member/', function() {
  *     window.pagemanager.refreshPage();
- * }, 'json');
+ * }, null, 'json', true, true);
  */
-    async function submitFormAndCloseModal(formSelector, modalId, url, successCallback, failedCallback, responseType = 'json') {
+    async function submitFormAndCloseModal(formSelector, modalId, url, successCallback, failedCallback, responseType = 'json', showLoading = true, iscloseModal = true) {
+        // 顯示 loading 狀態
+        const loading = document.getElementById('loading-overlay');
         try {
             let form = document.querySelector(formSelector);
             let formData = new FormData(form);
+
+            if (showLoading && loading) {
+                loading.style.display = 'block';
+            }
             
             let response = await fetch(url, {
                 method: 'POST',
@@ -111,18 +211,16 @@ var utilsModule = (function() {
                 data = await response.text();  // 預設解析為文字
             }
 
+            if (showLoading && loading) {
+                loading.style.display = 'none';  // 請求完成後隱藏 loading
+            }
+
             if (response.status) {
                 // 獲取並關閉 Modal
-                let modalElement = document.getElementById(modalId);
-                let modalInstance = bootstrap.Modal.getInstance(modalElement);
-                modalInstance.hide();
-                
-                // 完全關閉後執行頁面刷新或其他操作
-                modalElement.addEventListener('hidden.bs.modal', function () {
-                    if (typeof successCallback === 'function') {
-                        successCallback();
-                    }
-                });
+                if (iscloseModal) {      
+                    console.log(`關閉 ${modalId} 模態框`);              
+                    closeModal(modalId, successCallback);
+                }
             } else {
                 // 處理失敗情況
                 if (typeof failedCallback === 'function') {
@@ -134,6 +232,10 @@ var utilsModule = (function() {
             return { data, status: response.status };
 
         } catch (error) {
+            if (showLoading && loading) {
+                loading.style.display = 'none';  // 請求失敗後隱藏 loading
+            }
+
             console.error('Error:', error);
             throw error;  // 拋出異常
         }
@@ -141,8 +243,11 @@ var utilsModule = (function() {
 
 
     return {
-        fetchWithLoading: fetchWithLoading,
-        fetchData: fetchData,
-        submitFormAndCloseModal: submitFormAndCloseModal
+        isValidJSON: isValidJSON,               // 驗證是否為 JSON
+        fetchWithLoading: fetchWithLoading,     // 顯示 loading 畫面並執行 fetch
+        fetchData: fetchData,                   // 執行 fetch
+        submitFormAndCloseModal: submitFormAndCloseModal,    // 提交表單並關閉模態框
+        closeModal: closeModal,
+        showAlert: showAlert
     };
 })();

@@ -66,16 +66,8 @@
   <input type="password" name="admin_member_password_confirm" class="form-control" id="InputAdminPassword_confirm">
   <div id="alert_checkpassword" class="text-success"></div>
 </div>
-  <div class="p-3 m-0 border-0 bd-example m-0 border-0">
-    <div class="alert alert-primary d-flex align-items-center" role="alert" id="div_alert_create_user">
-      <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Info:">
-        <use xlink:href="#info-fill"/>
-      </svg>
-      <div id="alert_create_user">
-        An example alert with an icon
-      </div>
-    </div>
-  </div>
+
+<div class="p-3 m-0 border-0 bd-example m-0 border-0 d-none" id="div_alert_create_user_info"></div>
 
 <button type="submit" class="btn btn-primary" id="button_create_user" onclick="return confirm('確定要修改?')">確認</button>
 {% endblock %}
