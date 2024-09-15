@@ -43,4 +43,11 @@ export class PageManager {
         await current_activePage.loadPage();
       }
     }
+
+    showPage(text_data = null) {
+      let current_activePage = this.currentPage.getActivePage()
+      if (current_activePage !== null) {
+        current_activePage.displayPage(text_data);
+      }
+    }
 }

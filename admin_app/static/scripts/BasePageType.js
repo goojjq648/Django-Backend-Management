@@ -56,10 +56,8 @@ export class MainPage extends BasePage {
     getActivePage() {
       // 如果有子頁面
       if (this.sub_page_list) { 
-        console.log(this.sub_page_list);
         for (const subKey in this.sub_page_list) {
           if (this.sub_page_list[subKey].active === true) {
-            console.log(this.sub_page_list[subKey]);
             return this.sub_page_list[subKey];
           }
         }
@@ -203,21 +201,6 @@ export class SubPage extends BasePage {
     }
 
     unbindScript(url) {
-      // // 創建一個正則表達式來檢查不帶版本參數的腳本
-      // let baseUrl = url.split('?')[0]; // 獲取基礎 URL，忽略 ? 之後的部分
-      // console.log(baseUrl);
-      // let existingScript = Array.from(document.querySelectorAll('script'))
-      // .find(script => {
-      //   let scriptSrc = new URL(script.src, window.location.href).pathname; // 提取相對路徑
-      //   return scriptSrc === baseUrl; // 比較相對路徑是否相同
-      // });
-
-      // console.log(existingScript);
-
-      // if (existingScript) {
-      //   console.log('腳本已經載入，直接返回');
-      //   existingScript.parentNode.removeChild(existingScript);
-      // }
       if (this.bindScript === null) {
         return;
       }
