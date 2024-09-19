@@ -1,0 +1,682 @@
+{
+    "restaurants": [
+        {
+            "id": "uZPCGgo_acYgYAWh7ia-e3jVf0s2PSQH_bAgB-ibxpM=",
+            "name": "福井麵疙瘩/台北美食 台北小吃 台北必吃 中正紀念堂美食 中正紀念堂小吃 中正區美食 中正區小吃 植物園美食",
+            "type": "麵店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.4",
+            "avg_pay": "價格: $1-200",
+            "address": "10075台北市中正區寧波西街87-3號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:30",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5156986",
+            "latitude": "25.0299752",
+            "image_url": "uZPCGgo_acYgYAWh7ia-e3jVf0s2PSQH_bAgB-ibxpM=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E7%A6%8F%E4%BA%95%E9%BA%B5%E7%96%99%E7%98%A9%2F%E5%8F%B0%E5%8C%97%E7%BE%8E%E9%A3%9F+%E5%8F%B0%E5%8C%97%E5%B0%8F%E5%90%83+%E5%8F%B0%E5%8C%97%E5%BF%85%E5%90%83+%E4%B8%AD%E6%AD%A3%E7%B4%80%E5%BF%B5%E5%A0%82%E7%BE%8E%E9%A3%9F+%E4%B8%AD%E6%AD%A3%E7%B4%80%E5%BF%B5%E5%A0%82%E5%B0%8F%E5%90%83+%E4%B8%AD%E6%AD%A3%E5%8D%80%E7%BE%8E%E9%A3%9F+%E4%B8%AD%E6%AD%A3%E5%8D%80%E5%B0%8F%E5%90%83+%E6%A4%8D%E7%89%A9%E5%9C%92%E7%BE%8E%E9%A3%9F/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x140dd6cc661a4b0b:0xece608d0648d6ac4!8m2!3d25.0299752!4d121.5156986!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBC25vb2RsZV9zaG9wmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVI1WDJSWVJFaDNFQUXgAQA!16s%2Fg%2F11b5wl22yd?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "Y5OuhBLuUQFpqpzS74NhBo3JRmg5T6AYG7ows9qz5nk=",
+            "name": "豆味行",
+            "type": "小食/零食吧",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區南昌路一段64號",
+            "phone_number": "0223518939",
+            "businessHours": {
+                "星期五": "11:15 到 21:00",
+                "星期六": "11:15 到 21:00",
+                "星期一": "11:15 到 21:00",
+                "星期二": "11:15 到 21:00",
+                "星期三": "11:15 到 21:00",
+                "星期四": "11:15 到 21:00"
+            },
+            "longitude": "121.5170568",
+            "latitude": "25.0312372",
+            "image_url": "Y5OuhBLuUQFpqpzS74NhBo3JRmg5T6AYG7ows9qz5nk=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E8%B1%86%E5%91%B3%E8%A1%8C/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a999270414e5:0xcccc9aec6d03d657!8m2!3d25.0312372!4d121.5170568!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBCXNuYWNrX2JhcpoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOSGFrdEVkbUozRUFF4AEA!16s%2Fg%2F11gztpv1t?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "CUZCkTp1YbW5yq6c_kmlbkcyUafrAZu6qhCoegZVYs8=",
+            "name": "老建中麵店",
+            "type": "麵店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區泉州街39號",
+            "phone_number": "0223377968",
+            "businessHours": {
+                "星期五": "11:30 到 14:30",
+                "星期一": "11:30 到 14:30",
+                "星期二": "11:30 到 14:30",
+                "星期三": "11:30 到 14:30",
+                "星期四": "11:30 到 14:30"
+            },
+            "longitude": "121.5144371",
+            "latitude": "25.0290636",
+            "image_url": "CUZCkTp1YbW5yq6c_kmlbkcyUafrAZu6qhCoegZVYs8=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E8%80%81%E5%BB%BA%E4%B8%AD%E9%BA%B5%E5%BA%97/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a99874391ea3:0xf31fb40b1a803fff!8m2!3d25.0290636!4d121.5144371!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBC25vb2RsZV9zaG9wmgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU15ZHpkSVVVbFJFQUXgAQA!16s%2Fg%2F11gzl839f?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "wilkuTyk25TImxIiip9D5yNeP6HfeCfxxOujIQZJ90Q=",
+            "name": "東門赤肉羹",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.4",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區臨沂街56號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "06:30 到 14:30",
+                "星期六": "06:30 到 13:30",
+                "星期一": "06:30 到 14:30",
+                "星期二": "06:30 到 14:30",
+                "星期三": "06:30 到 14:30",
+                "星期四": "06:30 到 14:30"
+            },
+            "longitude": "121.5279152",
+            "latitude": "25.0353365",
+            "image_url": "wilkuTyk25TImxIiip9D5yNeP6HfeCfxxOujIQZJ90Q=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E6%9D%B1%E9%96%80%E8%B5%A4%E8%82%89%E7%BE%B9/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9787bdc8f75:0x74e071957e7adb9e!8m2!3d25.0353365!4d121.5279152!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTkxiazlVTW1KM0VBReABAA!16s%2Fg%2F1tt0nt_x?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "DMbzbLK2jahTpuYQNEps-68rUAlsAmkcGYH5ZRDWd1I=",
+            "name": "胡饕米粉湯55年老店（台大公館店）台北小吃 台北必吃 中正區美食 中正區小吃 公館美食 公館小吃 台大美食",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區羅斯福路三段284巷8號1樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 23:00",
+                "星期六": "11:00 到 23:00",
+                "星期日": "11:00 到 23:00",
+                "星期一": "11:00 到 23:00",
+                "星期二": "11:00 到 23:00",
+                "星期三": "11:00 到 23:00",
+                "星期四": "11:00 到 23:00"
+            },
+            "longitude": "121.531859",
+            "latitude": "25.016021",
+            "image_url": "DMbzbLK2jahTpuYQNEps-68rUAlsAmkcGYH5ZRDWd1I=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E8%83%A1%E9%A5%95%E7%B1%B3%E7%B2%89%E6%B9%AF55%E5%B9%B4%E8%80%81%E5%BA%97%EF%BC%88%E5%8F%B0%E5%A4%A7%E5%85%AC%E9%A4%A8%E5%BA%97%EF%BC%89%E5%8F%B0%E5%8C%97%E5%B0%8F%E5%90%83+%E5%8F%B0%E5%8C%97%E5%BF%85%E5%90%83+%E4%B8%AD%E6%AD%A3%E5%8D%80%E7%BE%8E%E9%A3%9F+%E4%B8%AD%E6%AD%A3%E5%8D%80%E5%B0%8F%E5%90%83+%E5%85%AC%E9%A4%A8%E7%BE%8E%E9%A3%9F+%E5%85%AC%E9%A4%A8%E5%B0%8F%E5%90%83+%E5%8F%B0%E5%A4%A7%E7%BE%8E%E9%A3%9F/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a913996730a7:0xf51ba47832f46bbd!8m2!3d25.016021!4d121.531859!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUlhNWEZsY1doQlJSQULgAQA!16s%2Fg%2F11h5p812gg?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "iSzxtfHaQl40X-iGbcQSumFEupJyfE_o9jaLIskZ9h8=",
+            "name": "同安街麵線羹",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區同安街85-1號",
+            "phone_number": "0223684231",
+            "businessHours": {
+                "星期五": "10:30 到 19:30",
+                "星期六": "10:30 到 19:30",
+                "星期日": "10:30 到 19:30",
+                "星期二": "10:30 到 19:30",
+                "星期三": "10:30 到 19:30",
+                "星期四": "10:30 到 19:30"
+            },
+            "longitude": "121.5209924",
+            "latitude": "25.0229909",
+            "image_url": "iSzxtfHaQl40X-iGbcQSumFEupJyfE_o9jaLIskZ9h8=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%90%8C%E5%AE%89%E8%A1%97%E9%BA%B5%E7%B7%9A%E7%BE%B9/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9a4a8ed200d:0xf5661557e73b69c7!8m2!3d25.0229909!4d121.5209924!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTlBkelZtV2xSQkVBReABAA!16s%2Fg%2F1thvqc_h?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "O5g-Tn-K2zn60rIpdCSbebcAn-bO0i4Cn-Lov2tb_k4=",
+            "name": "良友小館",
+            "type": "家庭餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區金山南路一段37號1樓",
+            "phone_number": "0223967277",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期日": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.529052",
+            "latitude": "25.0397497",
+            "image_url": "O5g-Tn-K2zn60rIpdCSbebcAn-bO0i4Cn-Lov2tb_k4=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E8%89%AF%E5%8F%8B%E5%B0%8F%E9%A4%A8/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9797cebefed:0xe76e6e85285201a1!8m2!3d25.0397497!4d121.529052!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBEWZhbWlseV9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVIxTmkxaWVFcG5FQUXgAQA!16s%2Fg%2F1tftc03c?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "oS1VrZcgSuRiPh5ETw3N-hKa6d8ZJti8WQxPETlD_Bs=",
+            "name": "黃家香腸",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "禁止內用",
+                    "description": "內用"
+                }
+            ],
+            "rating": "4.6",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區泉州街32之3號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "13:30 到 19:00",
+                "星期六": "13:30 到 19:00",
+                "星期日": "14:00 到 19:00",
+                "星期二": "13:30 到 19:00",
+                "星期三": "13:30 到 19:00",
+                "星期四": "13:30 到 19:00"
+            },
+            "longitude": "121.513514",
+            "latitude": "25.0258929",
+            "image_url": "oS1VrZcgSuRiPh5ETw3N-hKa6d8ZJti8WQxPETlD_Bs=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%BB%83%E5%AE%B6%E9%A6%99%E8%85%B8/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9bd6f8a8175:0xebcb6e980dcb3bcb!8m2!3d25.0258929!4d121.513514!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUmxkVFpwYldoM1JSQULgAQA!16s%2Fg%2F1tgc76wz?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "cXriEsMGAonoYl5xTYfeNAQ6K9TD9UGFoUROJnP-l0o=",
+            "name": "黄龍莊",
+            "type": "中餐館",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區牯嶺街43號",
+            "phone_number": "0223224295",
+            "businessHours": {
+                "星期五": "10:00 到 20:30",
+                "星期六": "10:00 到 20:30",
+                "星期日": "10:00 到 20:30",
+                "星期二": "10:00 到 20:30",
+                "星期三": "10:00 到 20:30",
+                "星期四": "10:00 到 20:30"
+            },
+            "longitude": "121.5165862",
+            "latitude": "25.0300122",
+            "image_url": "cXriEsMGAonoYl5xTYfeNAQ6K9TD9UGFoUROJnP-l0o=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%BB%84%E9%BE%8D%E8%8E%8A/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a998fbe65f61:0xd9b06c0c092ed225!8m2!3d25.0300122!4d121.5165862!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBEmNoaW5lc2VfcmVzdGF1cmFudJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VST01WOVhabVpSRUFF4AEA!16s%2Fg%2F11b6bgbr0k?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "hro3EVVjf_JrBdeAqlylJ-L3AYOZhOEMpQRfv5TKP9o=",
+            "name": "正宗阿桑大腸麵線",
+            "type": "台灣餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.7",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區泉州街32-2號",
+            "phone_number": "0958273597",
+            "businessHours": {
+                "星期五": "11:00 到 19:00",
+                "星期六": "11:00 到 19:00",
+                "星期日": "11:00 到 19:00",
+                "星期一": "12:00 到 18:45",
+                "星期二": "11:00 到 19:00",
+                "星期三": "11:00 到 19:00",
+                "星期四": "11:00 到 19:00"
+            },
+            "longitude": "121.5135789",
+            "latitude": "25.0259783",
+            "image_url": "hro3EVVjf_JrBdeAqlylJ-L3AYOZhOEMpQRfv5TKP9o=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E6%AD%A3%E5%AE%97%E9%98%BF%E6%A1%91%E5%A4%A7%E8%85%B8%E9%BA%B5%E7%B7%9A/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9bd6f886513:0x3ea28d724104ce82!8m2!3d25.0259783!4d121.5135789!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBFHRhaXdhbmVzZV9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVVJ2TlRnM1NVNVJFQUXgAQA!16s%2Fg%2F1tj485dx?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "4qrkzanfzRmOGPjwxtCxRPRbIiw-uERhmmsyxCYRyTQ=",
+            "name": "雙月食品社 青島店",
+            "type": "餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.8",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區青島東路6之2號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5220376",
+            "latitude": "25.0437017",
+            "image_url": "4qrkzanfzRmOGPjwxtCxRPRbIiw-uERhmmsyxCYRyTQ=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%9B%99%E6%9C%88%E9%A3%9F%E5%93%81%E7%A4%BE+%E9%9D%92%E5%B3%B6%E5%BA%97/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9710f1fbb81:0x54758a6d3b593eef!8m2!3d25.0437017!4d121.5220376!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBCnJlc3RhdXJhbnSaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUTVlRXd6YkhoM1JSQULgAQA!16s%2Fg%2F11xdvj852?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "oxGcIuDaRm4qS9IzUmxe9Ew9pD5jtsdJeMuRM3POKxc=",
+            "name": "佳味排骨麵",
+            "type": "中式麵食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區林森南路59-2號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 20:00",
+                "星期六": "11:00 到 20:00",
+                "星期一": "11:00 到 20:00",
+                "星期二": "11:00 到 20:00",
+                "星期三": "11:00 到 20:00",
+                "星期四": "11:00 到 20:00"
+            },
+            "longitude": "121.5222098",
+            "latitude": "25.039877",
+            "image_url": "oxGcIuDaRm4qS9IzUmxe9Ew9pD5jtsdJeMuRM3POKxc=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E4%BD%B3%E5%91%B3%E6%8E%92%E9%AA%A8%E9%BA%B5/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a976e57da749:0xfa9bd965ed939547!8m2!3d25.039877!4d121.5222098!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBGWNoaW5lc2Vfbm9vZGxlX3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVUlVYMTh0V0ZWQkVBReABAA!16s%2Fg%2F11h0t66s9?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "iTwMwbo17S1pXlMccmqCS_Vz_SGeFE793Qivan3hPNk=",
+            "name": "蜀來飽重慶小麵|酸辣粉|口水雞|紅糖糍粑|川味小吃",
+            "type": "四川酒家",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.7",
+            "avg_pay": "價格: $200-400",
+            "address": "10080台北市中正區汀州路二段96號1樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期二": "11:30 到 14:30"
+            },
+            "longitude": "121.5193665",
+            "latitude": "25.0248971",
+            "image_url": "iTwMwbo17S1pXlMccmqCS_Vz_SGeFE793Qivan3hPNk=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E8%9C%80%E4%BE%86%E9%A3%BD%E9%87%8D%E6%85%B6%E5%B0%8F%E9%BA%B5%7C%E9%85%B8%E8%BE%A3%E7%B2%89%7C%E5%8F%A3%E6%B0%B4%E9%9B%9E%7C%E7%B4%85%E7%B3%96%E7%B3%8D%E7%B2%91%7C%E5%B7%9D%E5%91%B3%E5%B0%8F%E5%90%83/@25.0306712,121.4995813,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a929a79c10a5:0xba76d664adaf136a!8m2!3d25.0248971!4d121.5193665!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBEnNpY2h1YW5fcmVzdGF1cmFudJoBJENoZERTVWhOTUc5blMwVkpRMEZuU1VRdGNXTmhabXRSUlJBQuABAA!16s%2Fg%2F11j2mp3xg0?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "HjR-m1I7VjYi7pgfreZpbFR7CnEYDZmeZop6-1p7nUU=",
+            "name": "元味古早小吃",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區延平南路179巷1弄1號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期日": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.507731",
+            "latitude": "25.0342643",
+            "image_url": "HjR-m1I7VjYi7pgfreZpbFR7CnEYDZmeZop6-1p7nUU=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%85%83%E5%91%B3%E5%8F%A4%E6%97%A9%E5%B0%8F%E5%90%83/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9a41d338fcb:0xbe1d77f61235d019!8m2!3d25.0342643!4d121.507731!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVUmxNM1ZITVdkUlJSQULgAQA!16s%2Fg%2F1xpwggyk?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "RJIVKxWgiBMTw1q1kwKTIGLRloDDCprnI2rcDuLlOgA=",
+            "name": "鑫耀鑫",
+            "type": "雞肉餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "3.9",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區公園路20巷12號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 20:00",
+                "星期六": "11:00 到 20:00",
+                "星期日": "11:00 到 20:00",
+                "星期一": "11:00 到 20:00",
+                "星期二": "11:00 到 20:00",
+                "星期三": "11:00 到 20:00",
+                "星期四": "11:00 到 20:00"
+            },
+            "longitude": "121.516625",
+            "latitude": "25.0450758",
+            "image_url": "RJIVKxWgiBMTw1q1kwKTIGLRloDDCprnI2rcDuLlOgA=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%91%AB%E8%80%80%E9%91%AB/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a97304df5c07:0xfc28cb16924ef52b!8m2!3d25.0450758!4d121.516625!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBEmNoaWNrZW5fcmVzdGF1cmFudJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOU05reFlSMVpuRUFF4AEA!16s%2Fg%2F11c2l20krn?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "K3_G_2dQRPOH4F41A_B1qWAdes2J-l61U8ceXMTxIFg=",
+            "name": "古北饕",
+            "type": "中式麵食店",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區金門街1-6號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 20:00",
+                "星期六": "11:00 到 20:00",
+                "星期日": "11:00 到 20:00",
+                "星期一": "11:00 到 20:00",
+                "星期二": "11:00 到 20:00",
+                "星期三": "11:00 到 20:00",
+                "星期四": "11:00 到 20:00"
+            },
+            "longitude": "121.5247633",
+            "latitude": "25.0230303",
+            "image_url": "K3_G_2dQRPOH4F41A_B1qWAdes2J-l61U8ceXMTxIFg=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%8F%A4%E5%8C%97%E9%A5%95/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a910cf86f2b5:0x68497a4c6e6529af!8m2!3d25.0230303!4d121.5247633!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBGWNoaW5lc2Vfbm9vZGxlX3Jlc3RhdXJhbnSaASNDaFpEU1VoTk1HOW5TMFZKUTBGblNVTjVhSFJYVFZSbkVBReABAA!16s%2Fg%2F11f5tw26t8?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "Ey-ellih1ZqFyyGZJG_-TvlIJRVwMiZezJK9IVbOx50=",
+            "name": "好味涼亭 麵食館",
+            "type": "中餐館",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.6",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區南海路42號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:30",
+                "星期六": "11:00 到 14:30",
+                "星期一": "11:00 到 14:30",
+                "星期二": "11:00 到 14:30",
+                "星期三": "11:00 到 14:30",
+                "星期四": "11:00 到 14:30"
+            },
+            "longitude": "121.5157365",
+            "latitude": "25.0320605",
+            "image_url": "Ey-ellih1ZqFyyGZJG_-TvlIJRVwMiZezJK9IVbOx50=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%A5%BD%E5%91%B3%E6%B6%BC%E4%BA%AD+%E9%BA%B5%E9%A3%9F%E9%A4%A8/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a96d380f98b5:0xe5681b02d6091708!8m2!3d25.0320605!4d121.5157365!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBEmNoaW5lc2VfcmVzdGF1cmFudJoBI0NoWkRTVWhOTUc5blMwVkpRMEZuU1VOaWRuWjVOMUozRUFF4AEA!16s%2Fg%2F11mvhhw8cj?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "LsG_KNlc7dTPHeEn0d50H26TJLSDZBMSmB6nhl9VLLU=",
+            "name": "雙月食品社 濟南店",
+            "type": "台灣餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.9",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區濟南路一段7號1樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期日": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5219127",
+            "latitude": "25.0427329",
+            "image_url": "LsG_KNlc7dTPHeEn0d50H26TJLSDZBMSmB6nhl9VLLU=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%9B%99%E6%9C%88%E9%A3%9F%E5%93%81%E7%A4%BE+%E6%BF%9F%E5%8D%97%E5%BA%97/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9a8a225dfbb:0x8f189a1ea4177217!8m2!3d25.0427329!4d121.5219127!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBFHRhaXdhbmVzZV9yZXN0YXVyYW50mgEkQ2hkRFNVaE5NRzluUzBWSlEwRm5TVU5YTW05cVJGOW5SUkFC4AEA!16s%2Fg%2F11jmcc3m2f?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "wUGakmyDofUzNwKZCEj5YXatL8rX9kKw4_Ru-yr7nug=",
+            "name": "金湘台灣小吃",
+            "type": "台灣餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區新生南路一段14號 1 樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 21:00",
+                "星期六": "11:00 到 21:00",
+                "星期日": "11:00 到 21:00",
+                "星期一": "11:00 到 21:00",
+                "星期二": "11:00 到 21:00",
+                "星期三": "11:00 到 21:00",
+                "星期四": "11:00 到 21:00"
+            },
+            "longitude": "121.5326308",
+            "latitude": "25.0434745",
+            "image_url": "wUGakmyDofUzNwKZCEj5YXatL8rX9kKw4_Ru-yr7nug=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%87%91%E6%B9%98%E5%8F%B0%E7%81%A3%E5%B0%8F%E5%90%83/@25.0342643,121.4696222,14z/data=!3m1!5s0x3442a97cbf2c70fb:0xf96a7e7c5a63ab2c!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a9d0d27bbe2f:0x16fbb5f5976aa00b!8m2!3d25.0434745!4d121.5326308!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBFHRhaXdhbmVzZV9yZXN0YXVyYW50mgEjQ2haRFNVaE5NRzluUzBWSlEwRm5TVU40ZVU5bFNVNUJFQUXgAQA!16s%2Fg%2F11fl7bg1wc?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "FW-aXr6tOxmoWWPfVSQJjQFMaXhECcynPx5is88AsHg=",
+            "name": "阿仁福州包",
+            "type": "熟食店",
+            "services": [
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區南陽街5號",
+            "phone_number": "0223888565",
+            "businessHours": {
+                "星期五": "11:00 到 21:00",
+                "星期六": "08:00 到 21:00",
+                "星期日": "08:00 到 21:00",
+                "星期一": "11:00 到 21:00",
+                "星期二": "11:00 到 21:00",
+                "星期三": "11:00 到 21:00",
+                "星期四": "11:00 到 21:00"
+            },
+            "longitude": "121.5161769",
+            "latitude": "25.0453242",
+            "image_url": "FW-aXr6tOxmoWWPfVSQJjQFMaXhECcynPx5is88AsHg=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%98%BF%E4%BB%81%E7%A6%8F%E5%B7%9E%E5%8C%85/@25.0342643,121.4696222,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A5bCP5ZCD!3m6!1s0x3442a96d5a673aa9:0xb3a9e800b5bf6002!8m2!3d25.0453242!4d121.5161769!15sChjlj7DljJfluILkuK3mraPljYDlsI_lkINaHiIc5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOWwj-WQg5IBBGRlbGmaASRDaGREU1VoTk1HOW5TMFZKUTBGblNVTXRaMUJZU21wQlJSQULgAQA!16s%2Fg%2F1tk20mld?entry=ttu&g_ep=EgoyMDI0MDkxNi4wIKXMDSoASAFQAw%3D%3D"
+        }
+    ]
+}
