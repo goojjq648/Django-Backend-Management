@@ -26,11 +26,6 @@
       <tr data-id="{{ restaurant.id }}">
           <td>{{ restaurant.id }}</td>
           <td>{{ restaurant.name }}</td>
-          <td>
-            <button type="button" class="btn btn-primary edit-btn" id="restaurant_edit_{{restaurant.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
-            <p> </p>
-            <button type="button" class="btn btn-danger" id="restaurant_delete_{{restaurant.id}}">刪除</button>
-        </td>
       </tr>
     {% endfor %}
 {% endblock %}

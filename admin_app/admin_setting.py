@@ -77,8 +77,11 @@ class AdminSetting:
         # 如果有改名稱，要檢查是否有重複的主類別
         if orgin_main_type != main_type:
             if self.check_admin_func_type_list(main_type):
+                print('主類別名稱已經被使用，請重新輸入')
                 return False
-
+        
+        print(f'edit_admin_func_type_list: {orgin_main_type} -> {main_type}')
+        print(f'edit_admin_func_type_list: {admin_list}')
         # 如果沒有改名稱，要刪掉原本的主類別才能新增新的主類別
         if orgin_main_type in admin_list:
             del admin_list[orgin_main_type]
@@ -93,6 +96,22 @@ class AdminSetting:
             return True
 
         return False
+    
+    def add_admin_func_type_list(self, main_type, button_icon, sub_datail_list):
+        admin_list = self.__admin_func_type_list
+        if main_type in admin_list:
+            print('主類別名稱已經被使用，請重新輸入')
+            return False
+
+        admin_list[main_type] = {
+            "button_icon": button_icon,
+        }
+
+        if sub_datail_list:
+            admin_list[main_type]["sub_detail"] = sub_datail_list
+
+        write_json_file(self.admin_setting_path, admin_list)
+        return True
 
     def delete_admin_func_type_list(self, main_type):
         admin_list = self.__admin_func_type_list

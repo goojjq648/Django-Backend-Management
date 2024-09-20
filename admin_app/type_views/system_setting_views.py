@@ -58,9 +58,14 @@ def confirm_editSetting(request):
 
         sublist[sub_id] = sub_name
 
+
     # 處理設定檔
-    if get_admin_setting().edit_admin_func_type_list(orgin_main_type, main_type, button_icon, sublist) is False:
-        return HttpResponse('更新資料失敗，請重新確認資料是否有誤')
+    if  select_action == 'addMainType':
+        if get_admin_setting().add_admin_func_type_list(main_type, button_icon, sublist) is False:
+            return HttpResponse('新增資料失敗，請重新確認資料是否有誤')
+    else:
+        if get_admin_setting().edit_admin_func_type_list(orgin_main_type, main_type, button_icon, sublist) is False:
+            return HttpResponse('更新資料失敗，請重新確認資料是否有誤')
 
     if select_action == 'addMainType':
         return HttpResponse('新增成功，請重新整理頁面')
