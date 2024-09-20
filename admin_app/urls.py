@@ -32,4 +32,5 @@ urlpatterns = [
     # 餐廳
     path('edit_restaurant/', restaurant_views.edit_restaurant_data, name='editrestaurant'),
     path('check_restaurantdata/', restaurant_views.check_restaurantdata, name='checkrestaurantdata'),
+    path('del_restaurant/', restaurant_views.del_restaurant, name='delrestaurantdata'),
 ]

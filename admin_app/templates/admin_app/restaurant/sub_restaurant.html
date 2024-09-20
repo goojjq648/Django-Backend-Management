@@ -27,9 +27,9 @@
         <tr data-id="{{ restaurant.id }}">
           {% for field, value in restaurant.items %}
             {% if field == 'image_url' %}
-              <td><img src="{% static 'images/restaurant_app/' %}{{ value }}" alt="餐廳圖片" style="width:100px;height:auto;"></td>
+              <td data-url="{{ value }}"><img src="{% static 'images/restaurant_app/' %}{{ value }}" alt="餐廳圖片" style="width:100px;height:auto;"></td>
             {% elif field == 'google_url' %}
-              <td><a href="{{ value }}">點擊這裡前往 Google Map</a></td>
+              <td data-url="{{ value }}"><a href="{{ value }}">點擊這裡前往 Google Map</a></td>
             {% else %}
               <td>{{ value }}</td>
             {% endif %}
@@ -37,7 +37,7 @@
             <td>
                 <button type="button" class="btn btn-primary edit-btn" id="restaurant_edit_{{restaurant.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
                 <p> </p>
-                <button type="button" class="btn btn-danger" id="restaurant_delete_{{restaurant.id}}">刪除</button>
+                <button type="button" class="btn btn-danger del-btn" id="restaurant_delete_{{restaurant.id}}" onclick="return confirm('真的要刪除嗎?')">刪除</button>
             </td>
         </tr>
     {% endfor %}
@@ -59,46 +59,9 @@
     <input type="text" class="form-label" id="InputRestaurantID" name="restaurant_id" value="" readonly>
     <input type="hidden" id="restaurant_action" name="restaurant_action" value="">
   </div>
-  <div class="mb-3">
-    <label for="InputRestaurantName" class="form-label">餐廳名稱</label>
-    <input type="text" class="form-control" id="InputRestaurantName" name="restaurant_name">
-    <div id="alert_restaurant_name" class="text-danger d-none">餐廳名稱不能為空！</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantRating" class="form-label">評分</label>
-    <input type="text" class="form-control" id="InputRestaurantRating" name="restaurant_rating">
-    <div id="alert_restaurant_rating" class="text-danger d-none">評分必須在0到5之間！</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantReviewCount" class="form-label">評論數</label>
-    <input type="text" class="form-control" id="InputRestaurantReviewCount" name="restaurant_review_count">
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantAddress" class="form-label">地址</label>
-    <input type="text" class="form-control" id="InputRestaurantAddress" name="restaurant_address">
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantAverageSpending" class="form-label">平均消費</label>
-    <input type="text" class="form-control" id="InputRestaurantAverageSpending" name="restaurant_average_spending">
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantBusinessHours" class="form-label">營業時間(JSON格式)</label>
-    <input type="text" class="form-control" id="InputRestaurantBusinessHours" name="restaurant_business_hours">
-    <div id="alert_restaurant_business_hours" class="text-danger d-none">營業時間必須是有效的 JSON 格式！</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantLatitude" class="form-label">緯度</label>
-    <input type="text" class="form-control" id="InputRestaurantLatitude" name="restaurant_latitude">
-    <div id="alert_restaurant_latitude" class="text-danger d-none">緯度必須在 -90 到 90 之間！</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantLongitude" class="form-label">經度</label>
-    <input type="text" class="form-control" id="InputRestaurantLongitude" name="restaurant_longitude">
-    <div id="alert_restaurant_longitude" class="text-danger d-none">經度必須在 -180 到 180 之間！</div>
-  </div>
-  <div class="mb-3">
-    <label for="InputRestaurantImageUrl" class="form-label">圖片網址</label>
-    <input type="text" class="form-control" id="InputRestaurantImageUrl" name="restaurant_image_url">
-  </div>
+  {{ render_form|safe }} 
+
   <button type="submit" class="btn btn-primary" id="button_restaurant_Submit" onclick="return confirm('真的要修改嗎?')">確認</button>
+  <div class="p-3 m-0 border-0 bd-example m-0 border-0 d-none" id="div_alert_restaurant_info"></div>
+
 {% endblock %}

@@ -85,6 +85,7 @@ function bindSubSettingEvents() {
 
                 document.querySelector('#InputRestaurantID').value = rowdata[ColumnDefs.ID];
                 document.querySelector('#InputRestaurantName').value = rowdata[ColumnDefs.NAME];
+                document.querySelector('#InputRestaurantHash').value = rowdata[ColumnDefs.HASH];
                 document.querySelector('#InputRestaurantRating').value = rowdata[ColumnDefs.RATING];
                 document.querySelector('#InputRestaurantReviewCount').value = rowdata[ColumnDefs.REVIEWS];  
                 document.querySelector('#InputRestaurantAddress').value = rowdata[ColumnDefs.ADDRESS];
@@ -94,8 +95,12 @@ function bindSubSettingEvents() {
                 document.querySelector('#InputRestaurantServices').value = rowdata[ColumnDefs.SERVICES];
                 document.querySelector('#InputRestaurantLatitude').value = rowdata[ColumnDefs.LATITUDE];
                 document.querySelector('#InputRestaurantLongitude').value = rowdata[ColumnDefs.LONGITUDE];
-                document.querySelector('#InputRestaurantImageUrl').value = rowdata[ColumnDefs.IMG_URL];
-                document.querySelector('#InputRestaurantGoogleUrl').value = rowdata[ColumnDefs.GOOGLE_URL];
+
+                const imgUrl = row.querySelector('td[data-url]').getAttribute('data-url');
+                const googleUrl = row.querySelector('td[data-url] a').getAttribute('href');
+
+                document.querySelector('#InputRestaurantImageUrl').value = imgUrl;
+                document.querySelector('#InputRestaurantGoogleUrl').value = googleUrl;
 
             }
         })
@@ -120,17 +125,23 @@ function bindSubSettingEvents() {
         try{
             utilsModule.submitFormAndCloseModal('#restaurant_form', 'formModal', restaurant_url, 
             function() {
-                // console.log('模態框已關閉，頁面正在刷新');
             }, 
             function() {
-                // console.log('');
             },
-            responseType = 'text')
+            responseType = 'json', true, false)
             .then(response => {
                 console.log('表單提交成功，返回資料:');
+                
+                if (response.data.action === 1) 
+                {
+                    alert('餐廳資料已經更新完成！');
+                    utilsModule.closeModal('formModal', window.pagemanager.refreshPage());
+                }
+                else
+                {
+                    utilsModule.showAlert('div_alert_restaurant_info', 'error', response.data.message);
+                }
 
-                window.pagemanager.refreshPage();
-                alert('餐廳資料已經更新完成！');
             })
             .catch(error => {
                 console.error('表單提交失敗，錯誤:', error);
@@ -150,14 +161,55 @@ function bindSubSettingEvents() {
 
     });
 
+    // 刪除餐廳資料
+    document.querySelectorAll('.del-btn').forEach(button =>{
+        button.addEventListener('click', function(event) {
+            // 拿到點到哪筆資料的刪除按鈕   
+            let del_btn_restaurant_id = button.id;
+            let del_restaurant_data_id = del_btn_restaurant_id.split('_')[2];
+
+            const csrftoken = window.csrf_token;
+    
+            const options = {
+                method:'POST',
+                headers:{
+                  'Content-Type': 'application/json',
+                  'X-CSRFToken': csrftoken
+                },
+                body:JSON.stringify({
+                    'restaurant_id': del_restaurant_data_id
+                })
+            }
+
+            utilsModule.fetchWithLoading('/admin_app/del_restaurant/',  
+                    options, 
+                    'json')
+                .then(response => {
+                    if (response.data.action === 1)
+                    {
+                        alert('餐廳資料已經刪除完成！');
+                        window.pagemanager.refreshPage();
+                    }
+                    else
+                    {
+                        alert(response.data.message);
+                    }
+                    
+                })            
+        });
+    });
+
+
 }
 
 function InitRestaurantForm(action) {
     if (action == "create") {
         document.querySelector('#Div_InputRestaurantID').classList.add('d-none');
+        document.querySelector('#InputRestaurantHash').value = "自動生成";
     }
     else if (action == "edit") {
         document.querySelector('#Div_InputRestaurantID').classList.remove('d-none');
+        document.querySelector('#InputRestaurantHash').value = "";
     }
 
     // 設定表單動作
@@ -168,11 +220,14 @@ function InitRestaurantForm(action) {
     document.querySelector('#InputRestaurantRating').value = "";
     document.querySelector('#InputRestaurantReviewCount').value = ""; 
     document.querySelector('#InputRestaurantAddress').value = "";
+    document.querySelector('#InputRestaurantPhone').value = "";
     document.querySelector('#InputRestaurantAverageSpending').value = "";
     document.querySelector('#InputRestaurantBusinessHours').value = "";
+    document.querySelector('#InputRestaurantServices').value = "";
     document.querySelector('#InputRestaurantLatitude').value = "";
     document.querySelector('#InputRestaurantLongitude').value = "";
     document.querySelector('#InputRestaurantImageUrl').value = "";
+    document.querySelector('#InputRestaurantGoogleUrl').value = "";
 
     // 隱藏警告訊息
     document.querySelector('#alert_restaurant_name').classList.add('d-none');
@@ -194,13 +249,17 @@ async function checkrestaurantFormField(id, name, validateFunction) {
             return;
         }
 
+        let action = document.querySelector('#restaurant_action').value;
+
         let value = inputField.value;
-        let url = `/admin_app/check_restaurantdata/?${name}=${value}`;
+        let url = `/admin_app/check_restaurantdata/?${name}=${value}&act=${action}`;
 
         try{
             let response = await utilsModule.fetchData(url,{ method: 'GET' }, 'json');
 
             if(response.status == 200){
+                alert_restaurant_name.innerHTML = response.data.message;
+                alert_restaurant_name.classList.remove('d-none');
                 console.log('Valid data:', response.data);
             }
         }
@@ -217,6 +276,7 @@ function validateRestaurantName() {
         
         if (name.value === '') {
             alert_restaurant_name.classList.remove('d-none');
+            alert_restaurant_name.innerHTML = '請輸入餐廳名稱';
             return false;
         }
         else {
@@ -232,6 +292,7 @@ function validateRestauranRating() {
     
     if (isNaN(value) || value <= 0 || value > 5) {
         alertMessage.classList.remove('d-none');
+        alertMessage.innerHTML = '請輸入 1 到 5 之間的整數';
         return false;
     } else {
         alertMessage.classList.add('d-none');
@@ -250,6 +311,7 @@ function validateRestaurantBusinessHours() {
     if (!utilsModule.isValidJSON(hours.value))
     {
         alertMessage.classList.remove('d-none');
+        alertMessage.innerHTML = '請輸入正確的 JSON 格式';
         return false;
     }
     else
@@ -266,6 +328,7 @@ function validateRestaurantLatitude() {
     
     if (isNaN(value) || value < -90 || value > 90) {
         alertMessage.classList.remove('d-none');
+        alertMessage.innerHTML = '請輸入 -90 到 90 之間的數字';
         return false;
     } else {
         alertMessage.classList.add('d-none');
@@ -280,6 +343,7 @@ function validateRestaurantLongitude() {
     
     if (isNaN(value) || value < -180 || value > 180) {
         alertMessage.classList.remove('d-none');
+        alertMessage.innerHTML = '請輸入 -180 到 180 之間的數字';
         return false;
     } else {
         alertMessage.classList.add('d-none');
