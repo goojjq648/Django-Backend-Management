@@ -11,6 +11,8 @@ var DataTableModule = (function() {
         var defaultOptions = {
             dom: 'Blfrtip',
             autoWidth: false,
+            scrollX: true,     // 啟用水平捲動
+            fixedColumns: true,  // 固定列寬
             columnDefs: [
             ],
             language: {

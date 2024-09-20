@@ -106,10 +106,16 @@ def check_restaurantdata(request):
 
 def restaurant(request):
     sub_title = '餐廳資料'
-    fields = ['編號', '餐廳名稱', '評分', '評論數', '地址',
-              '平均消費', '營業時間', '緯度', '經度', '圖片網址', '選項']
+    field_names = [field.verbose_name for field in Restaurant._meta.fields]
+    restaurant_data_list = [restaurant.as_dict() for restaurant in Restaurant.objects.all()]
 
-    restaurantDatas = Restaurant.objects.all()
+    # 新增選項
+    field_names.append('選項')
+
+    # fields = ['編號', '餐廳名稱','hash_value', '評分', '評論數', '地址','電話號碼',
+    #           '平均消費', '營業時間','提供服務', '緯度', '經度', '圖片網址', 'google網址','選項']
+
+    # restaurantDatas = Restaurant.objects.all()
 
     return render(request, 'admin_app/restaurant/sub_restaurant.html', locals())
 

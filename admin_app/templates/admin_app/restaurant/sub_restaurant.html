@@ -1,4 +1,5 @@
 {% extends 'admin_app/base/sub_base.html' %}
+{% load static %}
 
 {% block card_header %}
     <!-- 新增按鈕 -->
@@ -10,30 +11,29 @@
 {% block table_id %}restaurant_table{% endblock %}
 
 {% block field_head %}
-    {% for fieldName in fields %}
-        <th>{{ fieldName }}</th>
+    {% for field in field_names %}
+        <th>{{ field }}</th>
     {% endfor %}
 {% endblock %}
 
 {% block field_foot %}
-    {% for fieldName in fields %}
-        <th>{{ fieldName }}</th>
+    {% for field in field_names %}
+        <th>{{ field }}</th>
     {% endfor %}
 {% endblock %}
 
 {% block table_content %}
-    {% for restaurant in restaurantDatas %}
+    {% for restaurant in restaurant_data_list %}
         <tr data-id="{{ restaurant.id }}">
-            <td>{{ restaurant.id }}</td>
-            <td>{{ restaurant.name }}</td>
-            <td>{{ restaurant.rating }}</td>
-            <td>{{ restaurant.review_count }}</td>
-            <td>{{ restaurant.address }}</td>
-            <td>{{ restaurant.average_spending }}</td>
-            <td>{{ restaurant.opening_hours }}</td>
-            <td>{{ restaurant.latitude }}</td>
-            <td>{{ restaurant.longitude }}</td>
-            <td>{{ restaurant.image_url }}</td>
+          {% for field, value in restaurant.items %}
+            {% if field == 'image_url' %}
+              <td><img src="{% static 'images/restaurant_app/' %}{{ value }}" alt="餐廳圖片" style="width:100px;height:auto;"></td>
+            {% elif field == 'google_url' %}
+              <td><a href="{{ value }}">點擊這裡前往 Google Map</a></td>
+            {% else %}
+              <td>{{ value }}</td>
+            {% endif %}
+          {% endfor %}
             <td>
                 <button type="button" class="btn btn-primary edit-btn" id="restaurant_edit_{{restaurant.id}}" data-bs-toggle="modal" data-bs-target="#formModal">修改</button>
                 <p> </p>

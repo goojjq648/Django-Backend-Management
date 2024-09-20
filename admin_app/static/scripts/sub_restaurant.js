@@ -1,18 +1,55 @@
 function bindSubSettingEvents() {
+    const ColumnDefs = Object.freeze({
+        ID: 0,          
+        NAME: 1,  
+        HASH: 2,      
+        RATING: 3,      
+        REVIEWS: 4,     
+        ADDRESS: 5,     
+        PHONE: 6,       
+        AVG_SPEND: 7,   
+        BUSSINESS_HOURS: 8,       
+        SERVICES: 9,    
+        LATITUDE: 10,    
+        LONGITUDE: 11,  
+        IMG_URL: 12,    
+        GOOGLE_URL: 13, 
+        OPTIONS: 14  
+    });
+
+    // 表格設定
     DataTableModule.init('#restaurant_table', {
         columnDefs: [
-            { width: '5%', targets: 0 },   // 第一列 (編號)
-            { width: '15%', targets: 1 },  // 第二列 (餐廳名稱)
-            { width: '5%', targets: 2 },   // 第三列 (評分)
-            { width: '10%', targets: 3 },   // 第四列 (評論數)
-            { width: '20%', targets: 4 },  // 第五列 (地址)
-            { width: '10%', targets: 5 },  // 第六列 (平均消費)
-            { width: '15%', targets: 6 },  // 第七列 (營業時間)
-            { width: '5%', targets: 7 },   // 第八列 (緯度)
-            { width: '5%', targets: 8 },   // 第九列 (經度)
-            { width: '10%', targets: 9 },  // 第十列 (圖片網址)
-            { width: '15%', targets: 10 }  // 第十一列 (選項)
-        ]       
+            { width: '50px', targets: ColumnDefs.ID },           // 第一列 (編號)
+            { width: '200px', targets: ColumnDefs.NAME },        // 第二列 (餐廳名稱)
+            { width: '250px', targets: ColumnDefs.HASH },        // 第三列 (HASH)
+            { width: '50px', targets: ColumnDefs.RATING },       // 第四列 (評分)
+            { width: '50px', targets: ColumnDefs.REVIEWS },      // 第五列 (評論數)
+            { width: '150px', targets: ColumnDefs.ADDRESS },     // 第六列 (地址)
+            { width: '100px', targets: ColumnDefs.PHONE },       // 第七列 (電話)
+            { width: '50px', targets: ColumnDefs.AVG_SPEND },    // 第八列 (平均消費)
+            { width: '150px', targets: ColumnDefs.BUSSINESS_HOURS },  // 第九列 (營業時間)
+            { width: '150px', targets: ColumnDefs.SERVICES },    // 第十列 (提供服務)
+            { width: '50px', targets: ColumnDefs.LATITUDE },     // 第十一列 (緯度)
+            { width: '50px', targets: ColumnDefs.LONGITUDE },    // 第十二列 (經度)
+            { width: '100px', targets: ColumnDefs.IMG_URL },     // 第十三列 (圖片網址)
+            { width: '80px', targets: ColumnDefs.GOOGLE_URL },   // 第十四列 (google網址)
+            { width: '50px', targets: ColumnDefs.OPTIONS }       // 第十五列 (選項)
+        ],
+        createdRow: function(row, data, dataIndex) {
+            // 針對需要自動換行的欄位設置樣式
+            $('td', row).eq(ColumnDefs.NAME).css('white-space', 'normal');
+            $('td', row).eq(ColumnDefs.ADDRESS).css('white-space', 'normal');
+            $('td', row).eq(ColumnDefs.HASH).css('white-space', 'normal');
+            $('td', row).eq(ColumnDefs.BUSSINESS_HOURS).css('white-space', 'normal');
+        }
+    });
+
+    // 針對表頭進行樣式調整
+    $('#restaurant_table thead th').css({
+        'white-space': 'nowrap',    // 避免標題自動換行
+        'text-align': 'center',     // 讓標題文字居中
+        'vertical-align': 'middle'  // 垂直居中，讓文字更整齊
     });
 
     // 驗證表單
@@ -46,16 +83,19 @@ function bindSubSettingEvents() {
                 //直接把資料填入編輯資料的表單
                 InitRestaurantForm("edit");
 
-                document.querySelector('#InputRestaurantID').value = rowdata[0];
-                document.querySelector('#InputRestaurantName').value = rowdata[1];
-                document.querySelector('#InputRestaurantRating').value = rowdata[2];
-                document.querySelector('#InputRestaurantReviewCount').value = rowdata[3];  
-                document.querySelector('#InputRestaurantAddress').value = rowdata[4]; 
-                document.querySelector('#InputRestaurantAverageSpending').value = rowdata[5];
-                document.querySelector('#InputRestaurantBusinessHours').value = rowdata[6];
-                document.querySelector('#InputRestaurantLatitude').value = rowdata[7];
-                document.querySelector('#InputRestaurantLongitude').value = rowdata[8];
-                document.querySelector('#InputRestaurantImageUrl').value = rowdata[9];
+                document.querySelector('#InputRestaurantID').value = rowdata[ColumnDefs.ID];
+                document.querySelector('#InputRestaurantName').value = rowdata[ColumnDefs.NAME];
+                document.querySelector('#InputRestaurantRating').value = rowdata[ColumnDefs.RATING];
+                document.querySelector('#InputRestaurantReviewCount').value = rowdata[ColumnDefs.REVIEWS];  
+                document.querySelector('#InputRestaurantAddress').value = rowdata[ColumnDefs.ADDRESS];
+                document.querySelector('#InputRestaurantPhone').value = rowdata[ColumnDefs.PHONE]; 
+                document.querySelector('#InputRestaurantAverageSpending').value = rowdata[ColumnDefs.AVG_SPEND];
+                document.querySelector('#InputRestaurantBusinessHours').value = rowdata[ColumnDefs.BUSSINESS_HOURS];
+                document.querySelector('#InputRestaurantServices').value = rowdata[ColumnDefs.SERVICES];
+                document.querySelector('#InputRestaurantLatitude').value = rowdata[ColumnDefs.LATITUDE];
+                document.querySelector('#InputRestaurantLongitude').value = rowdata[ColumnDefs.LONGITUDE];
+                document.querySelector('#InputRestaurantImageUrl').value = rowdata[ColumnDefs.IMG_URL];
+                document.querySelector('#InputRestaurantGoogleUrl').value = rowdata[ColumnDefs.GOOGLE_URL];
 
             }
         })

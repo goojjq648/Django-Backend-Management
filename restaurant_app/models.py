@@ -19,22 +19,25 @@ class Category(models.Model):
 
 
 class Restaurant(models.Model):
-    id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=255)
-    hash_value = models.CharField(max_length=64, unique=True, blank=False, null=False)
-    rating = models.FloatField()
-    review_count = models.IntegerField()
-    address = models.CharField(max_length=255)
-    phone_number = models.CharField(max_length=20, null=True, blank=True)  # 新增電話號碼欄位
-    average_spending = models.CharField(max_length=255, blank=True, null=True)
-    opening_hours = models.JSONField(blank=True, null=True)
-    services = models.JSONField(blank=True, null=True)
-    latitude = models.FloatField()
-    longitude = models.FloatField()
-    image_url = models.CharField(max_length=500, blank=True, null=True)
-    google_url = models.URLField(max_length=1000, null=True, blank=True)  # Google Maps 連結欄位
+    id = models.AutoField(primary_key=True, verbose_name='編號')
+    name = models.CharField(max_length=255, verbose_name='餐廳名稱')
+    hash_value = models.CharField(max_length=64, unique=True, blank=False, null=False, verbose_name='Hash 值')
+    rating = models.FloatField(verbose_name='評分')
+    review_count = models.IntegerField(verbose_name='評論數')
+    address = models.CharField(max_length=255, verbose_name='地址')
+    phone_number = models.CharField(max_length=20, null=True, blank=True, verbose_name='電話號碼')  # 新增電話號碼欄位
+    average_spending = models.CharField(max_length=255, blank=True, null=True, verbose_name='平均消費')
+    opening_hours = models.JSONField(blank=True, null=True, verbose_name='營業時間')
+    services = models.JSONField(blank=True, null=True, verbose_name='提供服務')
+    latitude = models.FloatField(verbose_name='緯度')
+    longitude = models.FloatField(verbose_name='經度')
+    image_url = models.CharField(max_length=500, blank=True, null=True, verbose_name='圖片網址')
+    google_url = models.URLField(max_length=1000, null=True, blank=True, verbose_name='google網址')  # Google Maps 連結欄位
     # 其他欄位
     categories = models.ManyToManyField(Category, through='Restaurantcategory')
+
+    def as_dict(self):
+        return {field.name: getattr(self, field.name) for field in self._meta.fields}
     
 
     def save(self, *args, **kwargs):
