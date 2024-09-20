@@ -26,6 +26,12 @@ class Command(BaseCommand):
 
     
     def add_arguments(self, parser):
+        # 新增參數 --today 來處理今天的爬蟲資料
+        parser.add_argument(
+            '--today',
+            action='store_true',  # 如果指定此參數，值為 True，否則為 False
+            help='處理今天的爬蟲資料'
+        )
         # 新增參數 --filelist 來選擇特定檔案list
         parser.add_argument(
             '--filelist',
@@ -39,17 +45,35 @@ class Command(BaseCommand):
             help='允許更新已存在的餐廳資料'
         )
 
+    def get_today_files(self):
+        folder_path = getRestaurantScraperDataFolder()
+        today = datetime.today().strftime('%Y-%m-%d')
+        pattern = re.compile(r'restaurant_.*_(\d{4}-\d{2}-\d{2})\.json')
+
+        today_files = [filename for filename in os.listdir(folder_path) if pattern.match(filename) and today in filename]
+        logger.debug(f"找到今天的檔案: {today_files}")
+        return today_files
+
     def handle(self, *args, **options):
-        # 取得選擇的檔案list
-        filelist_key = options.get('filelist')
-        filelist = None
+        # 取得今天的爬蟲檔案
+        today = options.get('today')
+        if today:
+            filelist = self.get_today_files()
+            if not filelist:
+                logger.warning(f"今天沒有找到爬蟲資料")
+                return
+        else: 
+            # 如果沒有指定 --today 才取得 --filelist
+            # 取得選擇的檔案list
+            filelist_key = options.get('filelist')
+            filelist = None
+            
+            if filelist_key:
+                filelist = self.JSON_FILE_LIST.get(filelist_key)
+                logger.debug(f'filelist: {filelist}')
 
         update_existing = options.get('update')  # 判斷是否修正資料
         logger.debug(f'update_existing: {update_existing}')
-
-        if filelist_key:
-            filelist = self.JSON_FILE_LIST.get(filelist_key)
-            logger.debug(f'filelist: {filelist}')
 
         self.loadJsonFile(filelist, update_existing)
 
@@ -127,8 +151,8 @@ class Command(BaseCommand):
 
             json_data = self.checkJsonData(res_data["businessHours"])
             services_data = self.checkJsonData(res_data["services"])
-            logger.debug(f'services_data: {res_data["services"]}')
-            logger.debug(f'services_data: {services_data}')
+            # logger.debug(f'services_data: {res_data["services"]}')
+            # logger.debug(f'services_data: {services_data}')
 
             #
             if (restaurantData.exists()):

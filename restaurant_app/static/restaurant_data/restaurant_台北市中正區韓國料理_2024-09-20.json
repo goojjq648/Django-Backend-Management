@@ -1,0 +1,662 @@
+{
+    "restaurants": [
+        {
+            "id": "aibrc7EwLheDaD4m_td09a3Uox4W4ROH7DdXiqw2BmI=",
+            "name": "東大門韓國特色料理",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.7",
+            "avg_pay": "價格: $400-600",
+            "address": "106台北市大安區浦城街13巷29號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 22:00",
+                "星期六": "11:00 到 22:00",
+                "星期日": "11:00 到 22:00",
+                "星期一": "11:00 到 22:00",
+                "星期二": "11:00 到 22:00",
+                "星期三": "11:00 到 22:00",
+                "星期四": "11:00 到 22:00"
+            },
+            "longitude": "121.5280571",
+            "latitude": "25.0245278",
+            "image_url": "aibrc7EwLheDaD4m_td09a3Uox4W4ROH7DdXiqw2BmI=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E6%9D%B1%E5%A4%A7%E9%96%80%E9%9F%93%E5%9C%8B%E7%89%B9%E8%89%B2%E6%96%99%E7%90%86/@25.0316401,121.5007449,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a9faa47d3ac1:0x3b70cfe120691d8c!8m2!3d25.0245278!4d121.5280571!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11q_b206qy?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "F-m_G3bJBAkrH9TgOgAUjj0gK1pWkkkwROR77kPm-hA=",
+            "name": "京畿道韓式料理",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $1-200",
+            "address": "10065台北市中正區延平南路216巷2號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:30 到 14:00",
+                "星期六": "11:30 到 14:00",
+                "星期一": "11:30 到 14:00",
+                "星期二": "11:30 到 14:00",
+                "星期三": "11:30 到 14:00",
+                "星期四": "11:30 到 14:00"
+            },
+            "longitude": "121.50727",
+            "latitude": "25.0346581",
+            "image_url": "F-m_G3bJBAkrH9TgOgAUjj0gK1pWkkkwROR77kPm-hA=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E4%BA%AC%E7%95%BF%E9%81%93%E9%9F%93%E5%BC%8F%E6%96%99%E7%90%86/@25.0346581,121.4691612,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a9a6a0947489:0x2298e119afc8c6cf!8m2!3d25.0346581!4d121.50727!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11b63vpg6k?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "vBCRG1Iw1zElS6uO7q8mpUytDlkbfKlWtMauZYd7V9g=",
+            "name": "明洞食堂",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.6",
+            "avg_pay": "價格: $1-200",
+            "address": "100038台北市中正區同安街2之1號中國信託商業銀行旁小巷子",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:30 到 14:00",
+                "星期一": "17:00 到 20:30",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5225172",
+            "latitude": "25.025981",
+            "image_url": "vBCRG1Iw1zElS6uO7q8mpUytDlkbfKlWtMauZYd7V9g=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E6%98%8E%E6%B4%9E%E9%A3%9F%E5%A0%82/@25.0346581,121.4691612,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a954340e8ff9:0x1dd00f7465643070!8m2!3d25.025981!4d121.5225172!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11t762lzs5?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "Djdhdg-a9Pl0SsMe4trPS3ZW3n15SbDGvPe3Zaj9Zhk=",
+            "name": "南浦洞韓食",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.8",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區金門街25-1號",
+            "phone_number": "0223636999",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期日": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5228668",
+            "latitude": "25.0211424",
+            "image_url": "Djdhdg-a9Pl0SsMe4trPS3ZW3n15SbDGvPe3Zaj9Zhk=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%8D%97%E6%B5%A6%E6%B4%9E%E9%9F%93%E9%A3%9F/@25.0346581,121.4691612,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a929da2a08db:0x97d96eb518cf536b!8m2!3d25.0211424!4d121.5228668!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11y3jg9bg_?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "WVAUTE8V8OLNVA7ycdjQDDD7AeZE_IVtXgOcNhE1NCM=",
+            "name": "初瓦 台北捷運西門店",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.8",
+            "avg_pay": "價格: $600-800",
+            "address": "108台北市萬華區中華路一段90號2樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:30 到 15:30",
+                "星期六": "11:00 到 23:30",
+                "星期日": "11:00 到 23:30",
+                "星期一": "11:30 到 15:30",
+                "星期二": "11:30 到 15:30",
+                "星期三": "11:30 到 15:30",
+                "星期四": "11:30 到 15:30"
+            },
+            "longitude": "121.5084739",
+            "latitude": "25.0447232",
+            "image_url": "WVAUTE8V8OLNVA7ycdjQDDD7AeZE_IVtXgOcNhE1NCM=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%88%9D%E7%93%A6+%E5%8F%B0%E5%8C%97%E6%8D%B7%E9%81%8B%E8%A5%BF%E9%96%80%E5%BA%97/@25.0346581,121.4691612,14z/data=!3m1!5s0x3442a90bfe2a085b:0x7b18327fd4d9575c!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a95b39f200b5:0x981501b61d0278bc!8m2!3d25.0447232!4d121.5084739!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11t5pbsc2q?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "s84uZ2uo1ZaoaP2zuFPpX-ZJ1Ne5bd3F2TpTYkmYmCc=",
+            "name": "小飯館兒",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區汀州路三段202號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 15:00",
+                "星期六": "11:00 到 15:00",
+                "星期日": "11:00 到 15:30",
+                "星期一": "11:00 到 15:00",
+                "星期三": "11:00 到 15:00",
+                "星期四": "11:00 到 15:00"
+            },
+            "longitude": "121.5354191",
+            "latitude": "25.0122075",
+            "image_url": "s84uZ2uo1ZaoaP2zuFPpX-ZJ1Ne5bd3F2TpTYkmYmCc=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%B0%8F%E9%A3%AF%E9%A4%A8%E5%85%92/@25.0122075,121.4973103,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442ac1555555555:0x2babf70a0565f798!8m2!3d25.0122075!4d121.5354191!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11gzm8dr6?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "skxmcP_nEWIR5SgwlHa5IkS2Vr75hTJ8I7dfyfFJiKc=",
+            "name": "高麗園銅盤烤肉 三創市場",
+            "type": "韓式燒烤餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $400-600",
+            "address": "100台北市中正區市民大道三段2號9樓",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 22:00",
+                "星期六": "11:00 到 22:00",
+                "星期日": "11:00 到 21:30",
+                "星期一": "11:00 到 21:30",
+                "星期二": "11:00 到 21:30",
+                "星期三": "11:00 到 21:30",
+                "星期四": "11:00 到 21:30"
+            },
+            "longitude": "121.5313223",
+            "latitude": "25.0453208",
+            "image_url": "skxmcP_nEWIR5SgwlHa5IkS2Vr75hTJ8I7dfyfFJiKc=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%AB%98%E9%BA%97%E5%9C%92%E9%8A%85%E7%9B%A4%E7%83%A4%E8%82%89+%E4%B8%89%E5%89%B5%E5%B8%82%E5%A0%B4/@25.0453208,121.4932135,14z/data=!3m1!5s0x3442a964a9038d8d:0xf1f0c22c6ae943db!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a96357dc5231:0x4d5202d0e20be3f4!8m2!3d25.0453208!4d121.5313223!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARprb3JlYW5fYmFyYmVjdWVfcmVzdGF1cmFudOABAA!16s%2Fg%2F11cssfqx4z?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "dj8FrWsbiJQbxjMcCGwjUhZ71mazsirsGm8a59wjxeM=",
+            "name": "以雪爾",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $1-200",
+            "address": "10074台北市中正區南海路2巷14號",
+            "phone_number": "0223962247",
+            "businessHours": {
+                "星期五": "11:00 到 15:30",
+                "星期六": "11:00 到 15:30",
+                "星期一": "11:00 到 15:30",
+                "星期二": "11:00 到 15:30",
+                "星期三": "11:00 到 15:30",
+                "星期四": "11:00 到 15:30"
+            },
+            "longitude": "121.5180082",
+            "latitude": "25.0319249",
+            "image_url": "dj8FrWsbiJQbxjMcCGwjUhZ71mazsirsGm8a59wjxeM=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E4%BB%A5%E9%9B%AA%E7%88%BE/@25.0453208,121.4932135,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a9e0afc65dbb:0xbcbf30361e5bdd7d!8m2!3d25.0319249!4d121.5180082!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11hzwzc4tg?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "0Ma3mb3bbrJ8e-v23vBV87hwdi1GxE1ANlBe5wwMyk4=",
+            "name": "首爾之家",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.0",
+            "avg_pay": "價格: $400-600",
+            "address": "100台北市中正區羅斯福路三段244巷10弄14號",
+            "phone_number": "0223681900",
+            "businessHours": "null",
+            "longitude": "121.5313803",
+            "latitude": "25.0159805",
+            "image_url": "0Ma3mb3bbrJ8e-v23vBV87hwdi1GxE1ANlBe5wwMyk4=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%A6%96%E7%88%BE%E4%B9%8B%E5%AE%B6/@25.0453208,121.4932135,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a98b871485ff:0x7403e0854436b3ac!8m2!3d25.0159805!4d121.5313803!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11b7b_qytk?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "-4S5AQG0tgnoy3AgF-bERUJ9E6LEQxW-OFoDSV6I5eY=",
+            "name": "麥食達韓式料理",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供免下車服務",
+                    "description": "免下車服務"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區懷寧街86號",
+            "phone_number": "0223899048",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期日": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.513943",
+            "latitude": "25.0429159",
+            "image_url": "-4S5AQG0tgnoy3AgF-bERUJ9E6LEQxW-OFoDSV6I5eY=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%BA%A5%E9%A3%9F%E9%81%94%E9%9F%93%E5%BC%8F%E6%96%99%E7%90%86/@25.0453208,121.4932135,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a90b5265463f:0x4154a0d6ba79442b!8m2!3d25.0429159!4d121.513943!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F1tg_jb6x?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "QkbUqoRSuyQx0aCCP_3Tb0Y2Gh-7t-Esrzknzmo9htI=",
+            "name": "韓天閣",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.1",
+            "avg_pay": "價格: $200-400",
+            "address": "100台北市中正區羅斯福路四段78巷1弄11號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:30 到 14:30",
+                "星期六": "11:30 到 14:30",
+                "星期日": "11:30 到 14:30",
+                "星期一": "11:30 到 14:30",
+                "星期二": "11:30 到 14:30",
+                "星期三": "11:30 到 14:30",
+                "星期四": "11:30 到 14:30"
+            },
+            "longitude": "121.5341711",
+            "latitude": "25.0142221",
+            "image_url": "QkbUqoRSuyQx0aCCP_3Tb0Y2Gh-7t-Esrzknzmo9htI=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%9F%93%E5%A4%A9%E9%96%A3/@25.0142221,121.4960623,14z/data=!3m1!5s0x3442a980aee06bf9:0xbe96073c1663e7d3!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a98ae2c33c17:0xb374327ec2901242!8m2!3d25.0142221!4d121.5341711!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11gzw7j5d?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "Ngkchx0J2LOd-xv2Je_KhNLLdQhXMGWc-3tA2hFdcng=",
+            "name": "參三禾韓式料理",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.2",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區衡陽路84巷4號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5109598",
+            "latitude": "25.0418479",
+            "image_url": "Ngkchx0J2LOd-xv2Je_KhNLLdQhXMGWc-3tA2hFdcng=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%8F%83%E4%B8%89%E7%A6%BE%E9%9F%93%E5%BC%8F%E6%96%99%E7%90%86/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a9c1c98c3b69:0xf3f50ee3ca7b3fa4!8m2!3d25.0418479!4d121.5109598!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11sq_q_s5g?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "jlGk7sIukgHodwb-daS7CcmcZqc45tJpheZfhhFtGCo=",
+            "name": "Miso微笑韓國料理",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $200-400",
+            "address": "106台北市大安區金山南路二段6號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:30",
+                "星期六": "11:00 到 14:30",
+                "星期日": "11:00 到 14:30",
+                "星期一": "11:00 到 14:30",
+                "星期二": "11:00 到 14:30",
+                "星期三": "11:00 到 14:30",
+                "星期四": "11:00 到 14:30"
+            },
+            "longitude": "121.5269707",
+            "latitude": "25.0336693",
+            "image_url": "jlGk7sIukgHodwb-daS7CcmcZqc45tJpheZfhhFtGCo=.jpg",
+            "google_url": "https://www.google.com/maps/place/Miso%E5%BE%AE%E7%AC%91%E9%9F%93%E5%9C%8B%E6%96%99%E7%90%86/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a90831e585a9:0x31b757d0e5d4aa70!8m2!3d25.0336693!4d121.5269707!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11jt0f5y3l?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "KWXNGOzxTe4oRjzDn0XHYWAR1X2JcA7WU0rye1xqyFo=",
+            "name": "Ma C So Yo 築夢韓食",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "4.6",
+            "avg_pay": "價格: $400-600",
+            "address": "104台北市中山區中山北路一段121巷15號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:30 到 14:30",
+                "星期六": "11:30 到 14:30",
+                "星期日": "11:30 到 14:30",
+                "星期一": "11:30 到 14:30",
+                "星期二": "11:30 到 14:30",
+                "星期三": "11:30 到 14:30",
+                "星期四": "11:30 到 14:30"
+            },
+            "longitude": "121.5237984",
+            "latitude": "25.0510755",
+            "image_url": "KWXNGOzxTe4oRjzDn0XHYWAR1X2JcA7WU0rye1xqyFo=.jpg",
+            "google_url": "https://www.google.com/maps/place/Ma+C+So+Yo+%E7%AF%89%E5%A4%A2%E9%9F%93%E9%A3%9F/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a93ed34dda83:0x6efe9d81040f1a8b!8m2!3d25.0510755!4d121.5237984!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11f66gthf9?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "PpBqg7BcxvJfmnd6xHfB2-V4gNJRznBMyFWD7HE9_FY=",
+            "name": "圓夢POCHA",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "5.0",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區信陽街26之8號",
+            "phone_number": "null",
+            "businessHours": "null",
+            "longitude": "121.5154533",
+            "latitude": "25.044515",
+            "image_url": "PpBqg7BcxvJfmnd6xHfB2-V4gNJRznBMyFWD7HE9_FY=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E5%9C%93%E5%A4%A2POCHA/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a9bde5ca6407:0x192d28cd9212ced6!8m2!3d25.044515!4d121.5154533!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11vjmq0108?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "3Hms-VcQING0B4eqx0Q6bxImWoHYXH2oFM49vZyPT3Q=",
+            "name": "韓石鍋",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供路邊取餐服務",
+                    "description": "店外取貨"
+                }
+            ],
+            "rating": "3.3",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區羅斯福路三段40號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 13:30",
+                "星期六": "11:00 到 13:30",
+                "星期日": "11:00 到 13:30",
+                "星期二": "11:00 到 13:30",
+                "星期三": "11:00 到 13:30",
+                "星期四": "11:00 到 13:30"
+            },
+            "longitude": "121.5253085",
+            "latitude": "25.0229222",
+            "image_url": "3Hms-VcQING0B4eqx0Q6bxImWoHYXH2oFM49vZyPT3Q=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%9F%93%E7%9F%B3%E9%8D%8B/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a990260efc7f:0xf4504903b1ba1e73!8m2!3d25.0229222!4d121.5253085!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F12hntttxf?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "UUbZP7B5XcUzejuzYDr6yVdlMUbu-7GGdNAuYGekx3c=",
+            "name": "韓華屋",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "3.6",
+            "avg_pay": "價格: $1-200",
+            "address": "10075台北市中正區南昌路一段96號",
+            "phone_number": "0223960596",
+            "businessHours": {
+                "星期五": "11:00 到 14:30",
+                "星期六": "11:00 到 14:30",
+                "星期一": "11:00 到 14:30",
+                "星期二": "11:00 到 14:30",
+                "星期三": "11:00 到 14:30",
+                "星期四": "11:00 到 14:30"
+            },
+            "longitude": "121.5176091",
+            "latitude": "25.03053",
+            "image_url": "UUbZP7B5XcUzejuzYDr6yVdlMUbu-7GGdNAuYGekx3c=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%9F%93%E8%8F%AF%E5%B1%8B/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a99919b7595b:0xb005668326ede469!8m2!3d25.03053!4d121.5176091!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F1tkb_tl6?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "rAHKAXzQc4F0eofGcPgR1-Q8f4f-UKTYqqtxmm0L4KA=",
+            "name": "愛樂廚房",
+            "type": "韓式燒烤餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "無外送服務",
+                    "description": "外送"
+                }
+            ],
+            "rating": "3.8",
+            "avg_pay": "價格: $400-600",
+            "address": "100台北市中正區羅斯福路三段282號2樓",
+            "phone_number": "0223653867",
+            "businessHours": {
+                "星期五": "11:30 到 14:00",
+                "星期六": "11:30 到 22:00",
+                "星期日": "11:30 到 22:00",
+                "星期二": "11:30 到 14:00",
+                "星期三": "11:30 到 14:00",
+                "星期四": "11:30 到 14:00"
+            },
+            "longitude": "121.5321045",
+            "latitude": "25.0164986",
+            "image_url": "rAHKAXzQc4F0eofGcPgR1-Q8f4f-UKTYqqtxmm0L4KA=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E6%84%9B%E6%A8%82%E5%BB%9A%E6%88%BF/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a98b9246c70d:0x1115c372e27172eb!8m2!3d25.0164986!4d121.5321045!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARprb3JlYW5fYmFyYmVjdWVfcmVzdGF1cmFudOABAA!16s%2Fg%2F1tjz5n7g?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "c2fZaHaS_EPWAZsrBXT0HH4whFEdjupRACZCqNNKNuE=",
+            "name": "金家飯捲 KOREA GIMBAP 김가김밥",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供內用",
+                    "description": "內用"
+                },
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                }
+            ],
+            "rating": "4.3",
+            "avg_pay": "價格: $1-200",
+            "address": "100台北市中正區金門街2-3號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期一": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.5246377",
+            "latitude": "25.0232178",
+            "image_url": "c2fZaHaS_EPWAZsrBXT0HH4whFEdjupRACZCqNNKNuE=.jpg",
+            "google_url": "https://www.google.com/maps/place/%E9%87%91%E5%AE%B6%E9%A3%AF%E6%8D%B2+KOREA+GIMBAP+%EA%B9%80%EA%B0%80%EA%B9%80%EB%B0%A5/@25.0418479,121.472851,14z/data=!3m1!5s0x3442a9903b26d657:0x6bfd2adbb8710c8c!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a96436c38fcb:0x7a55085ff6d1417!8m2!3d25.0232178!4d121.5246377!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11s1y45njg?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        },
+        {
+            "id": "gdK9HLAEJGq4d6b11qTbuFuK6I3nd0L5ghX_B5DtehI=",
+            "name": "Aum Aum Dosirak 韓定食 大安店",
+            "type": "韓國餐廳",
+            "services": [
+                {
+                    "service": "提供外帶服務",
+                    "description": "外帶"
+                },
+                {
+                    "service": "提供外送服務",
+                    "description": "外送"
+                },
+                {
+                    "service": "禁止內用",
+                    "description": "內用"
+                }
+            ],
+            "rating": "4.8",
+            "avg_pay": "價格: $200-400",
+            "address": "10650台北市大安區麗水街1號",
+            "phone_number": "null",
+            "businessHours": {
+                "星期五": "11:00 到 14:00",
+                "星期六": "11:00 到 14:00",
+                "星期二": "11:00 到 14:00",
+                "星期三": "11:00 到 14:00",
+                "星期四": "11:00 到 14:00"
+            },
+            "longitude": "121.529246",
+            "latitude": "25.033385",
+            "image_url": "gdK9HLAEJGq4d6b11qTbuFuK6I3nd0L5ghX_B5DtehI=.jpg",
+            "google_url": "https://www.google.com/maps/place/Aum+Aum+Dosirak+%E9%9F%93%E5%AE%9A%E9%A3%9F+%E5%A4%A7%E5%AE%89%E5%BA%97/@25.0418479,121.472851,14z/data=!4m10!1m2!2m1!1z5Y-w5YyX5biC5Lit5q2j5Y2A6Z-T5ZyL5paZ55CG!3m6!1s0x3442a903ede89ed7:0xc2f9c0c6df5f48d6!8m2!3d25.033385!4d121.529246!15sCh7lj7DljJfluILkuK3mraPljYDpn5PlnIvmlpnnkIZaJSIj5Y-w5YyXIOW4giDkuK3mraMg5Y2AIOmfk-WciyDmlpnnkIaSARFrb3JlYW5fcmVzdGF1cmFudOABAA!16s%2Fg%2F11tmzs5xgv?entry=ttu&g_ep=EgoyMDI0MDkxNy4wIKXMDSoASAFQAw%3D%3D"
+        }
+    ]
+}
