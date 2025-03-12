@@ -141,3 +141,18 @@ class Restaurantimage(models.Model):
     class Meta:
         managed = False
         db_table = 'restaurantimage'
+
+
+class Streets(models.Model):
+    city = models.CharField(max_length=100)
+    district = models.CharField(max_length=100)
+    road = models.CharField(max_length=100)
+    latitude = models.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
+    longitude = models.DecimalField(max_digits=10, decimal_places=7, blank=True, null=True)
+    created_at = models.DateTimeField(blank=True, null=True)
+    updated_at = models.DateTimeField(blank=True, null=True)
+
+    class Meta:
+        managed = False
+        db_table = 'streets'
+        unique_together = (('city', 'district', 'road'),)
