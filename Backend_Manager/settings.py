@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'corsheaders',
+    'rest_framework',
+    'api',
     'restaurant_app',
     'admin_app',
 ]
@@ -54,6 +57,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
+]
+
+# 允許 Vue.js (localhost:5173) 訪問 Django API
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",  # Vue.js 本機運行的網址
+    "http://127.0.0.1:5173"
 ]
 
 ROOT_URLCONF = 'Backend_Manager.urls'
