@@ -6,7 +6,7 @@ from django.db.models.expressions import RawSQL
 
 from rest_framework import viewsets
 from restaurant_app.models import Restaurant
-from .serializers import RestaurantSerializer
+from api.serializers import RestaurantSerializer
 
 from django.conf import settings
 
