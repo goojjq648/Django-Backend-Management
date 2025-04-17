@@ -11,23 +11,43 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from elasticsearch import Elasticsearch
+from decouple import Config, RepositoryEnv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 import os
+import ssl
 
+# env - database
+database_env_path = os.path.join(BASE_DIR, 'databaseSetting.env')
+database_env_file = RepositoryEnv(database_env_path)
+database_config = Config(database_env_file)
+# env - database
+auth_env_path = os.path.join(BASE_DIR, 'authSetting.env')
+auth_env_file = RepositoryEnv(auth_env_path)
+auth_config = Config(auth_env_file)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-9oozhscxarzshv7znvi0j$kof4rilmfl@#28!vwt1)!q@cirpt'
+# SECRET_KEY = 'django-insecure-9oozhscxarzshv7znvi0j$kof4rilmfl@#28!vwt1)!q@cirpt'
+SECRET_KEY = auth_config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+CSRF_TRUSTED_ORIGINS = ['http://localhost:5173']
+LOGIN_REDIRECT_URL = '/profile/'
+
+GOOGLE_CLIENT_ID = auth_config('GOOGLE_CLIENT_ID')
+
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    ]
 
 LOGIN_REDIRECT_URL = '/admin_app/dashboard'
 LOGOUT_REDIRECT_URL = '/admin_app/dashboard'
@@ -42,14 +62,17 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'corsheaders',
     'rest_framework',
     'api',
     'restaurant_app',
     'admin_app',
+    'django_elasticsearch_dsl',
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -57,13 +80,12 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 # 允許 Vue.js (localhost:5173) 訪問 Django API
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:5173",  # Vue.js 本機運行的網址
-    "http://127.0.0.1:5173"
+    "http://127.0.0.1:5173",
 ]
 
 ROOT_URLCONF = 'Backend_Manager.urls'
@@ -91,13 +113,14 @@ WSGI_APPLICATION = 'Backend_Manager.wsgi.application'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default':
+    {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'restaurant',
-        'USER': 'root',
-        'PASSWORD': 'P@ssw0rd',
-        'HOST': 'localhost',
-        'PORT': 3306,
+        'NAME': database_config('DB_NAME'),
+        'USER': database_config('DB_USER'),
+        'PASSWORD': database_config('DB_PASSWORD'),
+        'HOST': database_config('DB_HOST'),
+        'PORT': database_config('DB_PORT', default='3306'),
     }
 }
 
@@ -166,3 +189,25 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+context = ssl.create_default_context()
+context.check_hostname = False  
+context.verify_mode = ssl.CERT_NONE  
+
+es_hosts = auth_config('ELASTICSEARCH_HOST', cast=lambda v: [s.strip() for s in v.split(',')])
+
+es = Elasticsearch(
+    es_hosts,   # Elasticsearch 伺服器地址
+    basic_auth=(auth_config('ELASTICSEARCH_USER'), auth_config('ELASTICSEARCH_PASSWORD')),
+    ssl_context=context,
+    verify_certs=False 
+)
+
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': auth_config('ELASTICSEARCH_HOST'),  # Elasticsearch 伺服器地址
+        'http_auth': (auth_config('ELASTICSEARCH_USER'), auth_config('ELASTICSEARCH_PASSWORD')),
+        'ssl_context': context,
+        'verify_certs': False,
+    },
+}
