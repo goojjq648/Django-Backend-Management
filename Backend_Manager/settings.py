@@ -33,7 +33,6 @@ auth_config = Config(auth_env_file)
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-# SECRET_KEY = 'django-insecure-9oozhscxarzshv7znvi0j$kof4rilmfl@#28!vwt1)!q@cirpt'
 SECRET_KEY = auth_config('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
