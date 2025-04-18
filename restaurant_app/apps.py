@@ -7,4 +7,4 @@ class RestaurantAppConfig(AppConfig):
     def ready(self):
         from . import scheduler
         print('restaurant_app ready')
-        scheduler.start()
+        # scheduler.start()
