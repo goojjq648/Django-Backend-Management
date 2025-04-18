@@ -105,7 +105,8 @@ venv/
 ENV/ 
 env.bak/ 
 venv.bak/ 
-TravelFun/databaseSetting.env.txt
+databaseSetting.env
+authSetting.env
 
 # mkdocs documentation 
 /site 
