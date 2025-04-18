@@ -139,3 +139,5 @@ GitHub.sublime-settings
 !.vscode/extensions.json 
 .history
 restaurant_app/static/csv/error_log.csv
+authSetting.env
+databaseSetting.env
