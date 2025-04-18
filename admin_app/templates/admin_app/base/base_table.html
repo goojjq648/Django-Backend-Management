@@ -1,0 +1,33 @@
+<h3>{{ table_title }}</h3>
+<hr>
+
+<div class="card shadow mb-4">
+    <div class="card-header py-3 mb-4" style="border-top: 0.25rem solid #708ee9 !important;">
+        {% block card_header %}
+        {% endblock %}
+    </div>
+  <div class="card-body">
+      <div class="table-responsive">
+          <table class="table table-bordered" id="{% block table_id %}default_table_id{% endblock %}" width="100%" cellspacing="0">
+              <thead>
+                  <tr>
+                    {% block table_field_head %}
+                    {% endblock %}
+                  </tr>
+              </thead>
+              <tfoot>
+                  <tr>
+                    {% block table_field_foot %}
+                    {% endblock %}
+                  </tr>
+              </tfoot>
+              <tbody>
+                {% block table_content %}
+                {% endblock %}
+              </tbody>
+            </table>
+          </div>
+      </div>
+  </div>
+
+</div>

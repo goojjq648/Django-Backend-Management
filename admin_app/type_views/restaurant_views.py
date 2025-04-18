@@ -31,16 +31,18 @@ def edit_restaurant_data(request):
     average_spending = request.POST.get('average_spending')
 
     opening_hours = request.POST.get('opening_hours')
-    try:
-        opening_hours = json.loads(opening_hours)
-    except:
-        return JsonResponse({'action': 0, 'message': '營業時間是無效的JSON格式'})
+    if not opening_hours and opening_hours != '':
+        try:
+            opening_hours = json.loads(opening_hours)
+        except:
+            return JsonResponse({'action': 0, 'message': '營業時間是無效的JSON格式'})
 
     service = request.POST.get('services')
-    try:
-        services = json.loads(service)
-    except:
-        return JsonResponse({'action': 0, 'message': '服務資訊是無效的JSON格式'})
+    if not service and service != '':
+        try:
+            services = json.loads(service)
+        except:
+            return JsonResponse({'action': 0, 'message': '服務資訊是無效的JSON格式'})
 
     latitude = request.POST.get('latitude')
     print(type(latitude))

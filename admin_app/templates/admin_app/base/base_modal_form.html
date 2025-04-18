@@ -1,0 +1,22 @@
+ <!-- 彈跳視窗(修改表單) -->
+ <div class="modal modal-lg fade " id="{% block formmodal_id %}{% endblock %}" tabindex="-1" aria-labelledby="formModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="formModalLabel">{% block modal_title %}{% endblock %}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <!-- 表單內容 -->
+          <form id="{% block modal_form_id %}default_modal_form{% endblock %}">
+            {% block modal_form_block %}
+            {% endblock %}
+            <button type="submit" class="btn btn-primary" id="button_{{ modal_form_id }}_Submit" onclick="return confirm('真的要修改嗎?')">確認</button>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">關閉</button>
+        </div>
+      </div>
+    </div>
+  </div>
