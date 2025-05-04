@@ -2,32 +2,45 @@ from django.conf import settings
 import os
 from rest_framework import serializers
 from restaurant_app.models import Restaurant, Category, Restaurantcategory, Businesshours, Restaurantimage
+from django.contrib.auth.models import User
+from user.models import UserUserprofile
+import uuid
 
 # 餐廳分類序列化器
+
+
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']  # 只顯示分類 ID & 名稱
 
 # 餐廳營業時間序列化器
+
+
 class BusinessHoursSerializer(serializers.ModelSerializer):
     class Meta:
         model = Businesshours
         fields = ['day_of_week', 'open_time', 'close_time']  # 顯示營業時間資訊
 
 #  餐廳圖片序列化器
+
+
 class RestaurantImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurantimage
         fields = ['image_url']  # 只顯示圖片網址
 
 # 餐廳主序列化器（包含分類、營業時間、圖片）
+
+
 class RestaurantSerializer(serializers.ModelSerializer):
     categories = CategorySerializer(many=True, read_only=True)  # 讀取時顯示分類名稱
-    business_hours = BusinessHoursSerializer(many=True, read_only=True, source='businesshours_set')  # 讀取時顯示營業時間
-    images = RestaurantImageSerializer(many=True, read_only=True, source='restaurantimage_set')  # 讀取時顯示餐廳圖片
+    business_hours = BusinessHoursSerializer(
+        many=True, read_only=True, source='businesshours_set')  # 讀取時顯示營業時間
+    images = RestaurantImageSerializer(
+        many=True, read_only=True, source='restaurantimage_set')      # 讀取時顯示餐廳圖片
 
-    # 允許前端用分類 ID 建立關聯
+    # 新增或更新可以用id建立分類
     category_ids = serializers.PrimaryKeyRelatedField(
         queryset=Category.objects.all(),
         write_only=True,
@@ -45,13 +58,64 @@ class RestaurantSerializer(serializers.ModelSerializer):
     def get_real_image_url(self, obj):
         """ 透過 `image` 欄位補上完整的圖片 URL """
         if obj.image_url:  # 確保 `image` 欄位不為空
-            image_path = os.path.join(settings.STATIC_URL, "images/restaurant_app/", obj.image_url)
+            image_path = os.path.join(
+                settings.STATIC_URL, "images/restaurant_app/", obj.image_url)
 
-                    # 若在開發環境，直接使用 request.build_absolute_uri
+            # 若在開發環境，直接使用 request.build_absolute_uri
             request = self.context.get("request")
             if request and settings.DEBUG:
                 return request.build_absolute_uri(image_path)
-            
+
             return image_path
-        
+
         return None
+
+
+class UserSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        fields = ['username', 'password', 'email']
+        extra_kwargs = {
+            'username': {'required': False},
+            'password': {'write_only': True},  # 密碼不能回傳
+        }
+
+    def validate_email(self, value):
+        if User.objects.filter(email=value).exists():
+            raise serializers.ValidationError("Email 已經被註冊了。")
+        return value
+
+    def validate_password(self, value):
+        if len(value) < 8:
+            raise serializers.ValidationError("密碼長度至少 8 個字元。")
+        return value
+
+    def generate_uuid_username(self):
+        return uuid.uuid4().hex[:8]
+    
+    def validate(self, attrs):
+        if not attrs.get('username'):
+            attrs['username'] = self.generate_uuid_username()
+        return attrs
+
+    def create(self, validated_data):
+        user = User.objects.create_user(**validated_data)
+        return user
+
+
+class UserUserprofileSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+
+    class Meta:
+        model = UserUserprofile
+        fields = ['user', 'google_id', 'avatar_url', 'role']
+
+    def create(self, validated_data):
+        # 取出 user
+        user_data = validated_data.pop('user')
+
+        user_serializer = UserSerializer(data=user_data)
+        user_serializer.is_valid(raise_exception=True)
+        user = user_serializer.save()
+
+        return UserUserprofile.objects.create(user=user, **validated_data)

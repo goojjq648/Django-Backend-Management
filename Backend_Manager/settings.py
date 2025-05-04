@@ -10,6 +10,8 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import ssl
+import os
 from pathlib import Path
 from elasticsearch import Elasticsearch
 from decouple import Config, RepositoryEnv
@@ -17,8 +19,6 @@ from decouple import Config, RepositoryEnv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-import os
-import ssl
 
 # env - database
 database_env_path = os.path.join(BASE_DIR, 'databaseSetting.env')
@@ -46,7 +46,7 @@ GOOGLE_CLIENT_ID = auth_config('GOOGLE_CLIENT_ID')
 ALLOWED_HOSTS = [
     'localhost',
     '127.0.0.1',
-    ]
+]
 
 LOGIN_REDIRECT_URL = '/admin_app/dashboard'
 LOGOUT_REDIRECT_URL = '/admin_app/dashboard'
@@ -68,6 +68,7 @@ INSTALLED_APPS = [
     'restaurant_app',
     'admin_app',
     'django_elasticsearch_dsl',
+    'user',
 ]
 
 MIDDLEWARE = [
@@ -80,6 +81,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
 
 # 允許 Vue.js (localhost:5173) 訪問 Django API
 CORS_ALLOWED_ORIGINS = [
@@ -190,16 +197,18 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 context = ssl.create_default_context()
-context.check_hostname = False  
-context.verify_mode = ssl.CERT_NONE  
+context.check_hostname = False
+context.verify_mode = ssl.CERT_NONE
 
-es_hosts = auth_config('ELASTICSEARCH_HOST', cast=lambda v: [s.strip() for s in v.split(',')])
+es_hosts = auth_config('ELASTICSEARCH_HOST', cast=lambda v: [
+                       s.strip() for s in v.split(',')])
 
 es = Elasticsearch(
     es_hosts,   # Elasticsearch 伺服器地址
-    basic_auth=(auth_config('ELASTICSEARCH_USER'), auth_config('ELASTICSEARCH_PASSWORD')),
+    basic_auth=(auth_config('ELASTICSEARCH_USER'),
+                auth_config('ELASTICSEARCH_PASSWORD')),
     ssl_context=context,
-    verify_certs=False 
+    verify_certs=False
 )
 
 ELASTICSEARCH_DSL = {
@@ -210,3 +219,8 @@ ELASTICSEARCH_DSL = {
         'verify_certs': False,
     },
 }
+
+AUTHENTICATION_BACKENDS = [
+    'user.backends.EmailBackend',  # 自訂 email / username 登入後端
+    'django.contrib.auth.backends.ModelBackend',  # Django 內建 username 登入後端
+]

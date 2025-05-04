@@ -2,13 +2,17 @@ from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from .views.restaurant_views import RestaurantViewSet
 from .views.search_views import SearchAddressView
-from .views.auth_views import google_callback
+from .views.auth_views import UserLoginViewSet, UserRegisterViewSet, google_callback
 
 router = DefaultRouter()
 router.register(r'restaurants', RestaurantViewSet)  # 讓 `/api/restaurants/` 成為 API 端點
 
 urlpatterns = [
     path('', include(router.urls)),
-    path('search/address/', SearchAddressView.as_view(), name='search_address'),  # /api/search/address/
-    path('google/callback', google_callback, name='google-login'),                # /api/google/callback
+    # 搜尋提示
+    path('search/address/', SearchAddressView.as_view(), name='search_address'),                 # /api/search/address/
+    # 登入/註冊/Google登入
+    path('auth/login/',UserLoginViewSet.as_view(), name='login'),                                # /api/auth/login/
+    path('auth/register/',UserRegisterViewSet.as_view({'post': 'create'}), name='register'),     # /api/auth/register/
+    path('google/callback', google_callback, name='google-login'),                               # /api/google/callback
 ]
