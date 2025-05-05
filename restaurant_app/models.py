@@ -156,3 +156,28 @@ class Streets(models.Model):
         managed = False
         db_table = 'streets'
         unique_together = (('city', 'district', 'road'),)
+
+
+class Restaurantreview(models.Model):
+    user = models.ForeignKey('AuthUser', on_delete=models.CASCADE)
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    rating = models.FloatField()
+    review = models.TextField(blank=True, null=True)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        managed = False
+        db_table = 'RestaurantReview'
+        unique_together = (('user', 'restaurant'),)
+
+
+class Restaurantfavorite(models.Model):
+    user = models.ForeignKey('AuthUser', on_delete=models.CASCADE)
+    restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    class Meta:
+        managed = False
+        db_table = 'RestaurantFavorite'
+        unique_together = (('user', 'restaurant'),)
