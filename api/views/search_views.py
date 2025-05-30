@@ -2,29 +2,49 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from django.db import connection
 from restaurant_app.documents import StreetsDocument
+from elasticsearch_dsl import Q
 
 class SearchAddressView(APIView):
     def get(self, request):
         query = request.GET.get('query', '')
-        if query:
-            print("start search")
-            
-            # 使用 Elasticsearch 查詢，並搜尋 address 字段
-            results = StreetsDocument.search().query("multi_match", query=query, fields=['city', 'district', 'road']).highlight('city', 'district', 'road')[:30]
-            # 準備返回的資料
-            data = [
-                {
-                    "city": hit.city,
-                    "district": hit.district,
-                    "road": hit.road,
-                }
-                for hit in results
-            ]
-            
-            print(data)
-            return Response(data)
+        if not query:
+            return Response([])
+        
+        search = StreetsDocument.search()
+        # 同時發出三種補字查詢
+        search = search.suggest(
+            'city-suggest', query,
+            completion={"field": "suggest_city", "fuzzy": {"fuzziness": 1}, "size": 5}
+        ).suggest(
+            'district-suggest', query,
+            completion={"field": "suggest_district", "fuzzy": {"fuzziness": 1}, "size": 5}
+        ).suggest(
+            'road-suggest', query,
+            completion={"field": "suggest_road", "fuzzy": {"fuzziness": 1}, "size": 5}
+        ).suggest(
+            'full-address-suggest', query,
+            completion={"field": "suggest_full_address", "fuzzy": {"fuzziness": 1}, "size": 5}
+        )
 
-        return Response([])
+        response = search.execute()
+
+        data = []
+        for suggest_name in ['city-suggest', 'district-suggest', 'road-suggest', 'full-address-suggest']:
+            if suggest_name in response.suggest:
+                options = response.suggest[suggest_name][0].options
+                print(f'options: {options}')  # 印出建議
+                if options:
+                    data = [
+                        {
+                            "city": opt._source.city,
+                            "district": opt._source.district.replace(opt._source.city, ""),
+                            "road": opt._source.road
+                        }
+                        for opt in options
+                    ]
+                    break  # 用第一個有結果的建議即可
+
+        return Response(data)
 
 # class SearchAddressView(APIView):
 #     def get(self, request):
