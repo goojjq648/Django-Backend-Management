@@ -203,13 +203,13 @@ context.verify_mode = ssl.CERT_NONE
 es_hosts = auth_config('ELASTICSEARCH_HOST', cast=lambda v: [
                        s.strip() for s in v.split(',')])
 
-es = Elasticsearch(
-    es_hosts,   # Elasticsearch 伺服器地址
-    basic_auth=(auth_config('ELASTICSEARCH_USER'),
-                auth_config('ELASTICSEARCH_PASSWORD')),
-    ssl_context=context,
-    verify_certs=False
-)
+# es = Elasticsearch(
+#     es_hosts,   # Elasticsearch 伺服器地址
+#     basic_auth=(auth_config('ELASTICSEARCH_USER'),
+#                 auth_config('ELASTICSEARCH_PASSWORD')),
+#     ssl_context=context,
+#     verify_certs=False
+# )
 
 ELASTICSEARCH_DSL = {
     'default': {
