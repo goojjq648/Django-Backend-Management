@@ -76,6 +76,55 @@ DB_PORT=
 匯入資料庫
 請先建立 MySQL 資料庫，並修改 settings.py 中的資料庫連線設定。
 
+## 資料來源：餐廳爬蟲與資料導入
+
+本專案餐廳資料非人工建立，而是透過自動化爬蟲工具蒐集自 Google Map（或其他平台）。  
+👉 爬蟲工具可以參考這個repo: [google_map_restaurant_scraping](https://github.com/goojjq648/google_map_restaurant_scraping)
+- 爬蟲資料儲存為 JSON 格式  
+- 使用自定義 Python 工具將 JSON 轉換並寫入資料庫（MySQL） 
+
+### 主要檔案說明：
+
+- 爬蟲輸出資料：[restaurant_data](https://github.com/goojjq648/Django-Backend-Management/tree/main/restaurant_app/static/restaurant_data)   
+- 導入工具程式：[process_scraped_files.py](https://github.com/goojjq648/Django-Backend-Management/blob/main/restaurant_app/management/commands/process_scraped_files.py)  
+支援多種處理模式與參數，可控制要處理的日期、檔案集與是否更新資料。  
+
+### 工具設定說明
+工具內可定義多組檔案清單，例如：  
+
+```python
+# process_scraped_files.py 中的設定片段  
+JSON_FILE_LIST = {
+    'set1': ['restaurant_台北市中正區韓國料理_2024-09-20.json', 'restaurant_台北市中正區小吃_2024-09-20.json'],
+    'set2': ['restaurant_台北市中正區韓國料理_2024-09-20.json']
+}
+```
+
+#### 匯入所有預設檔案集
+```bash
+python manage.py process_scraped_files
+```
+
+#### 匯入特定檔案集（set2）
+```bash
+python manage.py process_scraped_files --filelist set2
+```
+
+#### 匯入今天的檔案（檔名含今日日期）
+```bash
+python manage.py process_scraped_files --today
+```
+
+#### 匯入今天的檔案，並允許更新資料庫中已存在的餐廳資料
+```bash
+python manage.py process_scraped_files --today --update
+```
+
+#### 匯入特定檔案集，並允許更新已存在資料
+```bash
+python manage.py process_scraped_files --filelist set2 --update
+```
+
 ## Street 資料表資料來源與匯入
 為了提供地點模糊搜尋（autocomplete），本專案建立了 `Street` 資料表，包含台灣所有縣市 / 區 / 路段的資料。
 
@@ -94,24 +143,26 @@ python manage.py import_tw_city_csv_data
 請確認本機已啟動 Elasticsearch（port: 9200）
 
 ### 索引建置方式
-以下為目前已建立於本機的 Elasticsearch 索引：
-`restaurants`:餐廳基本資料查詢索引
-`streets`:補字搜尋用地點資料（市/區/街道)
-`category_semantic`: 餐廳分類語意搜尋（語意相似推薦）
+以下為目前已建立於本機的 Elasticsearch 索引：  
+`restaurants`:餐廳基本資料查詢索引  
 
-1. `restaurants` 與 `streets`：
-先創建索引
+`streets`:補字搜尋用地點資料（市/區/街道)  
+
+`category_semantic`: 餐廳分類語意搜尋（語意相似推薦）  
+
+1. `restaurants` 與 `streets`：  
+先創建索引  
 ```bash
 python manage.py search_index --create
 ```
-如需重新建立這些索引，請依下方方式操作:
+如需重新建立這些索引，請依下方方式操作:  
 ```bash
 python manage.py search_index --rebuild
 ```
 
-2. category_semantic：
-\restaurant_app\script\es_category_index.py
-可以使用
+2. category_semantic：  
+`\restaurant_app\script\es_category_index.py`  
+可以使用  
 ```bash
 python manage.py shell
 ```
@@ -120,4 +171,14 @@ from restaurant_app.utils.es_category_index import build_category_index
 build_category_index()
 ```
 
+# 運行專案
+```bash
+python manage.py runserver
+```
+
+### 測試
+在瀏覽器網址列輸入以下即可看到畫面
+```
+http://127.0.0.1:8000/
+```
 
