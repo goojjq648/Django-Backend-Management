@@ -9,6 +9,9 @@ from django.db import models
 import hashlib
 from django.utils.dateparse import parse_time
 from datetime import datetime
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 class Category(models.Model):
     name = models.CharField(unique=True, max_length=100)
@@ -159,7 +162,7 @@ class Streets(models.Model):
 
 
 class Restaurantreview(models.Model):
-    user = models.ForeignKey('AuthUser', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     rating = models.FloatField()
     review = models.TextField(blank=True, null=True)
@@ -173,7 +176,7 @@ class Restaurantreview(models.Model):
 
 
 class Restaurantfavorite(models.Model):
-    user = models.ForeignKey('AuthUser', on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     restaurant = models.ForeignKey('Restaurant', on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 

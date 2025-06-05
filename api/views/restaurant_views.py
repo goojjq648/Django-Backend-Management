@@ -1,14 +1,17 @@
 from django.shortcuts import render
+from django.conf import settings
 
-# Create your views here.
 from django.db.models import FloatField
 from django.db.models.expressions import RawSQL
 
-from rest_framework import viewsets
-from restaurant_app.models import Restaurant
-from api.serializers import RestaurantSerializer
+from rest_framework import viewsets, serializers, permissions, status
+from rest_framework.response import Response
+from rest_framework.exceptions import PermissionDenied
 
-from django.conf import settings
+from restaurant_app.models import Restaurant, Restaurantreview, Restaurantfavorite
+
+from api.serializers import RestaurantSerializer, RestaurantReviewSerializer, RestaurantFavoriteSerializer
+
 from Backend_Manager.elasticsearch_client import es
 from sentence_transformers import SentenceTransformer
 
@@ -76,3 +79,83 @@ class RestaurantViewSet(viewsets.ModelViewSet):
             queryset = queryset.filter(categories__name__in=category_ids)
 
         return queryset
+
+
+class RestaurantReviewViewSet(viewsets.ModelViewSet):
+    queryset = Restaurantreview.objects.all()
+    serializer_class = RestaurantReviewSerializer
+    # permission_classes = [permissions.IsAuthenticated]
+
+    def get_permissions(self):
+        if self.action == 'create' or self.action == 'update' or self.action == 'destroy':
+            return [permissions.IsAuthenticated()]
+        else:
+            return []
+
+    def get_queryset(self):
+        query = self.queryset
+        restaurant_id = self.request.query_params.get('restaurant_id')
+        if restaurant_id:
+            query = query.filter(restaurant_id=restaurant_id)
+            return query
+        else:
+            query = self.queryset.none()
+
+        return query
+
+    def list(self, request, *args, **kwargs):
+        queryset = self.get_queryset()
+        if not queryset.exists():
+            return Response([], status=status.HTTP_204_NO_CONTENT)
+
+        serializer = self.get_serializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def create(self, request, *args, **kwargs):
+        serializer = self.get_serializer(data=request.data)
+        try:
+            if not serializer.is_valid():
+                print(serializer.errors)
+                return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        except Exception as e:
+            return Response({'error': f"驗證失敗{str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+
+        try:
+            self.perform_create(serializer)
+        except Exception as e:
+            return Response({'error': f":{str(e)}"}, status=status.HTTP_400_BAD_REQUEST)
+        headers = self.get_success_headers(serializer.data)
+        return Response(serializer.data, status=status.HTTP_201_CREATED, headers=headers)
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def perform_update(self, serializer):
+        if serializer.instance.user != self.request.user and not self.request.user.is_staff:
+            raise PermissionDenied("你沒有權限修改這筆資料。")
+        serializer.save()
+
+    def perform_destroy(self, instance):
+        if instance.user != self.request.user and not self.request.user.is_staff:
+            raise PermissionDenied("你沒有權限刪除這筆資料。")
+        instance.delete()
+
+
+class RestaurantFavoriteViewSet(viewsets.ModelViewSet):
+    queryset = Restaurantfavorite.objects.all()
+    serializer_class = RestaurantFavoriteSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    def perform_create(self, serializer):
+        serializer.save(user=self.request.user)
+
+    def get_queryset(self):
+        user = self.request.user
+        if user.is_staff:
+            return self.queryset.all()
+        return self.queryset.filter(user=user)
+
+    def perform_destroy(self, instance):
+        if instance.user != self.request.user and not self.request.user.is_staff:
+            raise PermissionDenied("你沒有權限刪除這筆收藏。")
+        instance.delete()

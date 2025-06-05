@@ -1,44 +1,36 @@
 from django.conf import settings
 import os
 from rest_framework import serializers
-from restaurant_app.models import Restaurant, Category, Restaurantcategory, Businesshours, Restaurantimage
+from restaurant_app.models import Restaurant, Category, Restaurantcategory, Businesshours, Restaurantimage, Restaurantfavorite, Restaurantreview
 from django.contrib.auth.models import User
 from user.models import UserUserprofile
 import uuid
 
 # 餐廳分類序列化器
-
-
 class CategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = Category
         fields = ['id', 'name']  # 只顯示分類 ID & 名稱
 
 # 餐廳營業時間序列化器
-
-
 class BusinessHoursSerializer(serializers.ModelSerializer):
     class Meta:
         model = Businesshours
         fields = ['day_of_week', 'open_time', 'close_time']  # 顯示營業時間資訊
 
 #  餐廳圖片序列化器
-
-
 class RestaurantImageSerializer(serializers.ModelSerializer):
     class Meta:
         model = Restaurantimage
         fields = ['image_url']  # 只顯示圖片網址
 
 # 餐廳主序列化器（包含分類、營業時間、圖片）
-
-
 class RestaurantSerializer(serializers.ModelSerializer):
-    categories = CategorySerializer(many=True, read_only=True)  # 讀取時顯示分類名稱
+    categories = CategorySerializer(many=True, read_only=True)   # 讀取時顯示分類名稱
     business_hours = BusinessHoursSerializer(
-        many=True, read_only=True, source='businesshours_set')  # 讀取時顯示營業時間
+        many=True, read_only=True, source='businesshours_set')   # 讀取時顯示營業時間
     images = RestaurantImageSerializer(
-        many=True, read_only=True, source='restaurantimage_set')      # 讀取時顯示餐廳圖片
+        many=True, read_only=True, source='restaurantimage_set') # 讀取時顯示餐廳圖片
 
     # 新增或更新可以用id建立分類
     category_ids = serializers.PrimaryKeyRelatedField(
@@ -119,3 +111,46 @@ class UserUserprofileSerializer(serializers.ModelSerializer):
         user = user_serializer.save()
 
         return UserUserprofile.objects.create(user=user, **validated_data)
+
+
+# 評論 
+class RestaurantReviewSerializer(serializers.ModelSerializer):
+    username = serializers.SerializerMethodField()
+    avatar_url = serializers.SerializerMethodField()
+    class Meta:
+        model = Restaurantreview
+        fields = ['id', 'user', 'restaurant_id', 'rating', 'review', 'created_at', 'updated_at', 'avatar_url', 'username']
+        read_only_fields = ['id', 'created_at', 'updated_at', 'user', 'avatar_url', 'username']
+
+    def get_username(self, obj):
+        return obj.user.username
+
+    def get_avatar_url(self, obj):
+        if obj.user.useruserprofile.avatar_url:
+            return obj.user.useruserprofile.avatar_url
+        return None
+
+    def create(self, validated_data):
+        user = self.context['request'].user
+        restaurant = Restaurant.objects.get(pk=self.context['request'].data['restaurant_id'])
+
+        # 檢查是否已經評論過
+        if Restaurantreview.objects.filter(user=user, restaurant_id=restaurant).exists():
+            raise serializers.ValidationError("已經評論過了。")
+
+
+        validated_data['user'] = self.context['request'].user
+        validated_data['restaurant_id'] = self.context['request'].data['restaurant_id']
+        return super().create(validated_data)
+
+
+# 收藏
+class RestaurantFavoriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Restaurantfavorite
+        fields = ['id', 'user', 'restaurant', 'created_at']
+        read_only_fields = ['id', 'created_at', 'user']
+
+    def create(self, validated_data):
+        validated_data['user'] = self.context['request'].user
+        return super().create(validated_data)

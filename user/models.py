@@ -8,7 +8,7 @@ class UserUserprofile(models.Model):
         ('admin', '後台管理員'),
     ]
 
-    user = models.OneToOneField(User, models.DO_NOTHING)
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name="useruserprofile")
     google_id = models.CharField(unique=True, max_length=128, blank=True, null=True)
     avatar_url = models.CharField(max_length=2000, blank=True, null=True)
     role = models.CharField(max_length=6, blank=True, null=True, choices=ROLE_CHOICES, default='user')
