@@ -5,13 +5,19 @@ from .documents import RestaurantDocument
 from Backend_Manager.elasticsearch_client import es
 from sentence_transformers import SentenceTransformer
 
+
 @receiver(post_save, sender=Restaurant)
-def update_restaurant_index(sender, instance, **kwargs):
-    RestaurantDocument().update(instance)
+def update_restaurant_index(sender, instance, created, **kwargs):
+    if created:
+        RestaurantDocument().save(instance)  # 新增
+    else:
+        RestaurantDocument().update(instance)  # 更新
+
 
 @receiver(post_delete, sender=Restaurant)
 def delete_restaurant_index(sender, instance, **kwargs):
     RestaurantDocument().delete(instance)
+
 
 @receiver(post_save, sender=Category)
 def index_categories(sender, instance, created, **kwargs):
