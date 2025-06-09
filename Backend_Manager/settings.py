@@ -230,3 +230,5 @@ AUTHENTICATION_BACKENDS = [
     'user.backends.EmailBackend',  # 自訂 email / username 登入後端
     'django.contrib.auth.backends.ModelBackend',  # Django 內建 username 登入後端
 ]
+
+SITE_ID = 1
