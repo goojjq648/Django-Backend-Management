@@ -3,10 +3,12 @@ from django.conf import settings
 
 from django.db.models import FloatField
 from django.db.models.expressions import RawSQL
+import random
 
 from rest_framework import viewsets, serializers, permissions, status
 from rest_framework.response import Response
 from rest_framework.exceptions import PermissionDenied
+from rest_framework.views import APIView
 
 from restaurant_app.models import Restaurant, Restaurantreview, Restaurantfavorite
 
@@ -32,26 +34,28 @@ class RestaurantViewSet(viewsets.ModelViewSet):
         latitude = self.request.query_params.get('lat')  # 取得緯度參數
         longitude = self.request.query_params.get('lng')  # 取得經度參數
 
-        print(f'location: {location}')
-        print(f'category: {category}')
-        print(f'latitude: {latitude}')
-        print(f'longitude: {longitude}')
-
         # 設定篩選餐廳的最大距離
-        max_distance = 5000
+        max_distance = 5000  # 5 公里
 
         if latitude and longitude:
-            # `ST_Distance_Sphere` 會計算餐廳與使用者之間的距離（單位：公尺）
-            distance_sql = """
-                ST_Distance_Sphere(
-                    point(longitude, latitude),
-                    point(%s, %s)
-                )
-            """
-            queryset = queryset.annotate(
-                distance=RawSQL(distance_sql, (longitude, latitude),
-                                output_field=FloatField())
-            ).filter(distance__lte=max_distance).order_by('distance')
+            try:
+                # 避免傳入無效的經緯度
+                latitude = float(latitude)
+                longitude = float(longitude)
+
+                # `ST_Distance_Sphere` 會計算餐廳與使用者之間的距離（單位：公尺）
+                distance_sql = """
+                    ST_Distance_Sphere(
+                        point(longitude, latitude),
+                        point(%s, %s)
+                    )
+                """
+                queryset = queryset.annotate(
+                    distance=RawSQL(distance_sql, (longitude, latitude),
+                                    output_field=FloatField())
+                ).filter(distance__lte=max_distance).order_by('distance')
+            except ValueError:
+                return queryset.none()
 
         # 篩選餐廳類型
         if category:
@@ -65,7 +69,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
                     "knn": {
                         "field": "embedding",
                         "query_vector": query_vector,
-                        "k": 3,
+                        "k": 5,
                         "num_candidates": 100
                     }
                 },
@@ -73,6 +77,9 @@ class RestaurantViewSet(viewsets.ModelViewSet):
 
             category_ids = [hit['_source']['name']
                             for hit in search_result['hits']['hits']]
+            
+            for hit in search_result['hits']['hits']:
+                print(hit['_source']['name'], hit['_score'])
 
             print(f'category_ids: {category_ids}')
 
@@ -159,3 +166,28 @@ class RestaurantFavoriteViewSet(viewsets.ModelViewSet):
         if instance.user != self.request.user and not self.request.user.is_staff:
             raise PermissionDenied("你沒有權限刪除這筆收藏。")
         instance.delete()
+
+
+#特殊餐廳 
+class Recommend_RestaurantViewSet(viewsets.ModelViewSet):
+    queryset = Restaurant.objects.all()
+    serializer_class = RestaurantSerializer
+    http_method_names = ['get']
+
+    def get_queryset(self):
+        find_type = self.request.GET.get('type', 'popular')
+        latitude = float(self.request.GET.get('lat', 0))
+        longitude = float(self.request.GET.get('lng', 0))
+        limit = int(self.request.GET.get('limit', 10))
+        # 查找隨機推薦餐廳(評分最高的前 limit 個餐廳)
+        if find_type == 'random': 
+            # 查找評分最高的前 limit 個餐廳
+            queryset = Restaurant.objects.all().order_by('-rating')[:100]
+            
+            if limit > 0:
+                queryset = random.sample(list(queryset), limit)
+                print(queryset)
+            else:
+                queryset = []
+
+        return queryset

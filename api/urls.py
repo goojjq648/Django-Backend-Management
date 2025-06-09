@@ -1,6 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from .views.restaurant_views import RestaurantViewSet, RestaurantReviewViewSet, RestaurantFavoriteViewSet
+from .views.restaurant_views import RestaurantViewSet, RestaurantReviewViewSet, RestaurantFavoriteViewSet, Recommend_RestaurantViewSet
 from .views.search_views import SearchAddressView, SearchLocationView
 from .views.auth_views import UserLoginViewSet, UserRegisterViewSet, google_callback
 
@@ -19,4 +19,6 @@ urlpatterns = [
     path('auth/login/',UserLoginViewSet.as_view(), name='login'),                                # /api/auth/login/
     path('auth/register/',UserRegisterViewSet.as_view({'post': 'create'}), name='register'),     # /api/auth/register/
     path('google/callback', google_callback, name='google-login'),                               # /api/google/callback
+    # 查找推薦餐廳
+    path('recommend_restaurants/', Recommend_RestaurantViewSet.as_view({'get': 'list'}), name='recommend_restaurants'),       # /api/recommend
 ]

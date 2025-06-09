@@ -15,6 +15,7 @@ import os
 from pathlib import Path
 from elasticsearch import Elasticsearch
 from decouple import Config, RepositoryEnv
+from datetime import timedelta
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -86,6 +87,11 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ),
+}
+
+SIMPLE_JWT = {
+    'ACCESS_TOKEN_LIFETIME': timedelta(minutes=60),      # access token 有效時間（預設是 5 分鐘）
+    'REFRESH_TOKEN_LIFETIME': timedelta(days=1),         # refresh token 有效時間（預設是 1 天）
 }
 
 # 允許 Vue.js (localhost:5173) 訪問 Django API
