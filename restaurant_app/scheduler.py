@@ -1,5 +1,6 @@
 from apscheduler.schedulers.background import BackgroundScheduler
 from django.core.management import call_command
+from apscheduler.triggers.cron import CronTrigger
 
 from . import file_paths as path_def
 from datetime import datetime, timedelta
@@ -38,9 +39,8 @@ def start():
     # 立即執行一次任務，然後每隔一天執行一次
     scheduler.add_job(
         lambda: call_command('process_scraped_files', '--today', '--update'),
-        'interval',
-        days=1,
-        next_run_time=datetime.now() + timedelta(seconds=1)
+        CronTrigger(hour=3, minute=0),  # 每天凌晨 3 點執行
+        id='daily_scraping'
     )
 
     scheduler.start()
