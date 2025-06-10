@@ -6,7 +6,9 @@ Django + Bootstrap 5 後臺管理系統｜餐廳探索平台後端專案
 這是餐廳探索平台的後端專案，提供前端使用者進行地點搜尋、餐廳分類推薦、地圖定位與資料查詢的 RESTful API。  
 後端以 **Django + MySQL + Elasticsearch** 為基礎架構，並整合 Google 登入與語意向量搜尋。
 
-Demo 影片（雲端連結）：🔗[餐廳探索網站demo](https://drive.google.com/file/d/15uLGbGJ4QDxI5ga3CHYZBeUgC-BEgYNk/view?usp=sharing) 
+Demo 影片（雲端連結）：  
+🔗[餐廳探索網站demo](https://drive.google.com/file/d/15uLGbGJ4QDxI5ga3CHYZBeUgC-BEgYNk/view?usp=sharing)  
+🔗[後台管理](https://drive.google.com/file/d/1Roly0gkHbR8tDIMamy-rBj67It1lz7VJ/view?usp=sharing)  
 
 # 專案前後端架構說明
 
