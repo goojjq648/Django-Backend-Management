@@ -25,6 +25,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
     queryset = Restaurant.objects.all()
     serializer_class = RestaurantSerializer
 
+
     def get_queryset(self):
         """根據 Vue.js 傳來的查詢參數 (`location` 和 `category`) 篩選餐廳"""
         queryset = Restaurant.objects.all()
@@ -33,6 +34,13 @@ class RestaurantViewSet(viewsets.ModelViewSet):
 
         latitude = self.request.query_params.get('lat')  # 取得緯度參數
         longitude = self.request.query_params.get('lng')  # 取得經度參數
+
+        # 取得排序參數 (rating:評分, distance:距離, price:價格)
+        sort_by = self.request.query_params.get('sort_by')
+        order = self.request.query_params.get(
+            'order')  # 取得排序方式參數 (asc:由小到大, desc:由大到小)
+        is_open_now = self.request.query_params.get(
+            'is_open_now')  # 取得是否營業參數 (-1:不限, 0:不營業, 1:營業)
 
         # 設定篩選餐廳的最大距離
         max_distance = 5000  # 5 公里
@@ -53,7 +61,7 @@ class RestaurantViewSet(viewsets.ModelViewSet):
                 queryset = queryset.annotate(
                     distance=RawSQL(distance_sql, (longitude, latitude),
                                     output_field=FloatField())
-                ).filter(distance__lte=max_distance).order_by('distance')
+                ).filter(distance__lte=max_distance) #.order_by(order_by_result)
             except ValueError:
                 return queryset.none()
 
@@ -84,6 +92,17 @@ class RestaurantViewSet(viewsets.ModelViewSet):
             print(f'category_ids: {category_ids}')
 
             queryset = queryset.filter(categories__name__in=category_ids)
+
+        if order == 'desc':
+            order_by_result = f'-{sort_by}'
+        else:
+            order_by_result = sort_by
+            
+        # 有傳入 location 參數,篩選餐廳距離
+        if queryset and sort_by == 'distance' and latitude and longitude:
+            queryset = queryset.order_by(order_by_result)
+        elif queryset and sort_by == 'rating':
+            queryset = queryset.order_by(order_by_result)
 
         return queryset
 
