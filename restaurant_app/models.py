@@ -76,6 +76,9 @@ class Restaurant(models.Model):
             for day, bussinesstime in self.opening_hours.items():
                 open_time, close_time = self.parseBusinesshours(bussinesstime)
 
+                if open_time is None or close_time is None:
+                    continue
+                
                 Businesshours.objects.create(
                     restaurant=self,
                     day_of_week=day,
@@ -84,11 +87,17 @@ class Restaurant(models.Model):
                 )
 
     def parseBusinesshours(self, timedata):
-        # sample : "星期日": "10:30 到 13:50"
-        open_time_str, close_time_str = timedata.split(' 到 ')
-        open_time = datetime.strptime(open_time_str, "%H:%M").time()
-        close_time = datetime.strptime(close_time_str, "%H:%M").time()
-        return open_time, close_time
+        try:
+            if not timedata or timedata.strip() in ["休息", ""] or '到' not in timedata:
+                return None, None
+        
+            # sample : "星期日": "10:30 到 13:50"
+            open_time_str, close_time_str = timedata.split(' 到 ')
+            open_time = datetime.strptime(open_time_str, "%H:%M").time()
+            close_time = datetime.strptime(close_time_str, "%H:%M").time()
+            return open_time, close_time
+        except Exception as e:
+            return None, None
     
     
     def updateCategoriesFromJson(self, json_data):

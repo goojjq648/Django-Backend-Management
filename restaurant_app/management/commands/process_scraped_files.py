@@ -11,11 +11,28 @@ import json
 
 
 # 設定 logger
-logger = logging.getLogger(
-    'food_app.management.commands.process_scraped_files')
+# logger = logging.getLogger(
+#     'food_app.management.commands.process_scraped_files')
 
+def setup_dynamic_logger():
+    log_filename = f"my_command_{datetime.now().strftime('%Y%m%d_%H%M%S')}.log"
+    handler = logging.FileHandler(log_filename, encoding='utf-8')
+    handler.setLevel(logging.DEBUG)
+    formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+    handler.setFormatter(formatter)
+
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.DEBUG)
+    logger.addHandler(handler)
+
+    return logger
+
+
+logger = setup_dynamic_logger()
 
 # 處理讀json檔案
+
+
 class Command(BaseCommand):
     help = '處理餐廳爬蟲數據的指令'
 
@@ -50,7 +67,8 @@ class Command(BaseCommand):
         today = datetime.today().strftime('%Y-%m-%d')
         pattern = re.compile(r'restaurant_.*_(\d{4}-\d{2}-\d{2})\.json')
 
-        today_files = [filename for filename in os.listdir(folder_path) if pattern.match(filename) and today in filename]
+        today_files = [filename for filename in os.listdir(
+            folder_path) if pattern.match(filename) and today in filename]
         logger.debug(f"找到今天的檔案: {today_files}")
         return today_files
 
@@ -62,12 +80,12 @@ class Command(BaseCommand):
             if not filelist:
                 logger.warning(f"今天沒有找到爬蟲資料")
                 return
-        else: 
+        else:
             # 如果沒有指定 --today 才取得 --filelist
             # 取得選擇的檔案list
             filelist_key = options.get('filelist')
             filelist = None
-            
+
             if filelist_key:
                 filelist = self.JSON_FILE_LIST.get(filelist_key)
                 logger.debug(f'filelist: {filelist}')
@@ -107,27 +125,14 @@ class Command(BaseCommand):
 
         logger.debug('讀取結束')
 
-    def TestBussinessHours(self, data):
-        res_data = data['restaurants'][0]
-        for day, bussinesstime in res_data['businessHours'].items():
-            self.parse_businesshours(bussinesstime)
-
-    def parse_businesshours(self, timedata):
-        # sample : "星期日": "10:30 到 13:50"
-        open_time_str, close_time_str = timedata.split(' 到 ')
-        open_time = datetime.strptime(open_time_str, "%H:%M").time()
-        close_time = datetime.strptime(close_time_str, "%H:%M").time()
-        logger.info(f'open_time: {open_time}, close_time: {close_time}')
-        return open_time, close_time
-    
     def checkJsonData(self, data):
         json_data = None
         if data == "null" or data == "[]" or data == "" or data == None or data == {}:
             json_data = None
         elif isinstance(data, (dict, list)) and data:
-        #    json_data = json.dumps(data, ensure_ascii=False)
+            #    json_data = json.dumps(data, ensure_ascii=False)
             json_data = data
-        
+
         return json_data
 
     # 儲存至資料庫
@@ -137,15 +142,18 @@ class Command(BaseCommand):
         for i in range(size):
             res_data = data['restaurants'][i]
             logger.debug(f'處理第 {i+1}-{res_data['id']} 餐廳')
-            
+
             # 檢查餐廳是否已重覆
             restaurantData = None
-            hash_code = Restaurant.generateHashValue(res_data['name'], res_data['address'])
+            hash_code = Restaurant.generateHashValue(
+                res_data['name'], res_data['address'])
             if not hash_code:
-                logger.error(f'第{i+1}-{res_data["id"]}資料 無 hash_value，不加入資料庫，請做確認')
+                logger.error(
+                    f'第{i+1}-{res_data["id"]}資料 無 hash_value，不加入資料庫，請做確認')
                 continue
             else:
-                restaurantData = Restaurant.objects.filter(hash_value=hash_code)
+                restaurantData = Restaurant.objects.filter(
+                    hash_value=hash_code)
 
             restaurantData = Restaurant.objects.filter(name=res_data['name'])
 
@@ -158,29 +166,40 @@ class Command(BaseCommand):
             if (restaurantData.exists()):
                 if update_existing:
                     try:
-                        logger.debug(f'{i+1}-{res_data["id"]}-{res_data["name"]} 比對hash {hash_code} 已存在於資料庫中，開始更新資料')
+                        logger.debug(
+                            f'{i+1}-{res_data["id"]}-{res_data["name"]} 比對hash {hash_code} 已存在於資料庫中，開始更新資料')
                         restaurant_exist = restaurantData.first()
                         # 更新
                         # restaurant_exist.name = res_data['name']
-                        restaurant_exist.rating = None if res_data['rating'] == 'null' else float(res_data['rating'])
+                        restaurant_exist.rating = None if res_data['rating'] == 'null' else float(
+                            res_data['rating'])
                         restaurant_exist.review_count = 0
                         # restaurant_exist.address = res_data['address']
-                        restaurant_exist.phone_number = None if res_data['phone_number'] == 'null' else res_data['phone_number']
-                        restaurant_exist.average_spending = None if res_data['avg_pay'] == 'null' else res_data['avg_pay']
+                        restaurant_exist.phone_number = None if res_data[
+                            'phone_number'] == 'null' else res_data['phone_number']
+                        restaurant_exist.average_spending = None if res_data[
+                            'avg_pay'] == 'null' else res_data['avg_pay']
                         restaurant_exist.opening_hours = json_data
                         restaurant_exist.services = services_data
                         restaurant_exist.latitude = float(res_data['latitude'])
-                        restaurant_exist.longitude = float(res_data['longitude'])
-                        restaurant_exist.image_url = None if res_data['image_url'] == 'null' else res_data['image_url']
-                        restaurant_exist.google_url = None if res_data['google_url'] == 'null' else res_data['google_url']
+                        restaurant_exist.longitude = float(
+                            res_data['longitude'])
+                        restaurant_exist.image_url = None if res_data[
+                            'image_url'] == 'null' else res_data['image_url']
+                        restaurant_exist.google_url = None if res_data[
+                            'google_url'] == 'null' else res_data['google_url']
 
                         restaurant_exist.save()
                         logger.debug(f'更新餐廳 {res_data["name"]} 成功')
 
+                        if res_data['type']:
+                            restaurant_exist.addCategories(res_data['type'])
+
                     except Exception as e:
-                        logger.error(f'更新餐廳 {res_data["name"]} 失敗')
+                        logger.error(f'更新餐廳 {res_data["name"]} 失敗' + str(e))
                 else:
-                    logger.error(f'{i+1}-{res_data["id"]}-{res_data["name"]} 比對hash {hash_code} 已存在於資料庫中，不加入資料庫，請做確認')
+                    logger.error(
+                        f'{i+1}-{res_data["id"]}-{res_data["name"]} 比對hash {hash_code} 已存在於資料庫中，不加入資料庫，請做確認')
                 continue
 
             #
@@ -205,18 +224,19 @@ class Command(BaseCommand):
 
             try:
                 restaurant_instance = Restaurant.objects.create(
-                    name = res_data['name'],
-                    rating = None if res_data['rating'] == 'null' else float(res_data['rating']),
-                    review_count = 0,
+                    name=res_data['name'],
+                    rating=None if res_data['rating'] == 'null' else float(
+                        res_data['rating']),
+                    review_count=0,
                     address=res_data['address'],
-                    phone_number = None if res_data['phone_number'] == 'null' else res_data['phone_number'],
-                    average_spending = None if res_data['avg_pay'] == 'null' else res_data['avg_pay'],
-                    opening_hours= json_data,
-                    services = services_data,
-                    latitude = float(res_data['latitude']),
-                    longitude = float(res_data['longitude']),
-                    image_url = None if res_data['image_url'] == 'null' else res_data['image_url'],
-                    google_url = None if res_data['google_url'] == 'null' else res_data['google_url']
+                    phone_number=None if res_data['phone_number'] == 'null' else res_data['phone_number'],
+                    average_spending=None if res_data['avg_pay'] == 'null' else res_data['avg_pay'],
+                    opening_hours=json_data,
+                    services=services_data,
+                    latitude=float(res_data['latitude']),
+                    longitude=float(res_data['longitude']),
+                    image_url=None if res_data['image_url'] == 'null' else res_data['image_url'],
+                    google_url=None if res_data['google_url'] == 'null' else res_data['google_url']
                 )
 
                 logger.debug(f'新增餐廳資訊 {res_data["name"]} 成功')
@@ -224,7 +244,8 @@ class Command(BaseCommand):
             except IntegrityError as e:
                 logger.error(f'新增餐廳資訊 {res_data["name"]} 失敗，原因: {e}')
             except Exception as e:
-                logger.error("=====================================================")
+                logger.error(
+                    "=====================================================")
                 logger.error("ERROR")
                 logger.error("name:", res_data['name'])
                 logger.error("rating:", res_data['rating'])
@@ -238,9 +259,9 @@ class Command(BaseCommand):
                 logger.error("image_url:", res_data['image_url'])
                 logger.error("google_url:", res_data['google_url'])
                 logger.error(f'新增餐廳資訊 {res_data["name"]} 失敗，原因: {e}')
-                logger.error("=====================================================")
+                logger.error(
+                    "=====================================================")
 
-            
             try:
                 if not restaurant_instance:
                     continue
@@ -252,29 +273,3 @@ class Command(BaseCommand):
                     restaurant_instance.addCategories(res_data['type'])
             except Exception as e:
                 logger.error(f'新增餐廳種類 {res_data["name"]} 失敗，原因: {e}')
-
-            # if restaurant_instance is not None:
-            #     # 處理此美食種類
-            #     if not res_data['type']:
-            #         logger.debug(f'餐廳種類 {res_data["name"]} 目前無資料')
-            #         continue
-            #     else:
-            #         restaurant = Restaurant.objects.get(name=res_data['name'])
-            #         category = Category.objects.get(name=res_data['type'])
-            #         restaurant.categories.add(category)
-
-                # 處理餐廳營業時間
-                # if not res_data['businessHours']:
-                #     logger.debug(f'餐廳 {res_data["name"]} 營業時間目前無資料')
-                #     continue
-                # else:
-                #     for day, bussinesstime in res_data['businessHours'].items():
-                #         open_time, close_time = self.parse_businesshours(
-                #             bussinesstime)
-
-                #         Businesshours.objects.create(
-                #             restaurant=restaurant_instance,
-                #             day_of_week=day,
-                #             open_time=open_time,
-                #             close_time=close_time
-                #         )
