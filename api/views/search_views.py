@@ -33,6 +33,7 @@ class SearchAddressView(APIView):
         )
 
         response = search.execute()
+        # print(response.suggest.to_dict())
 
         data = []
         for suggest_name in ['city-suggest', 'district-suggest', 'road-suggest', 'full-address-suggest']:
@@ -90,11 +91,13 @@ class SearchLocationView(APIView):
         
         if query:
             # 先從資料庫查到相似的地點直接使用
-            coordinates = Streets.objects.filter(
-                DjangoQ(district__contains=query) | DjangoQ(road__contains=query),
-                latitude__isnull=False,
-                longitude__isnull=False
-            ).first()
+            # coordinates = Streets.objects.filter(
+            #     DjangoQ(district__contains=query) | DjangoQ(road__contains=query),
+            #     latitude__isnull=False,
+            #     longitude__isnull=False
+            # ).first()
+
+            coordinates = None
 
             if coordinates:
                 latitude = coordinates.latitude
@@ -120,7 +123,7 @@ class SearchLocationView(APIView):
 
                     print(f'latitude: {latitude}, longitude: {longitude} from nominatim')
 
-                    return Response({"latitude": latitude, "longitude": longitude})
+                    return Response({"latitude": latitude, "longitude": longitude}, status=200)
                 except Exception as e:
                     return Response({"error": "Nominatim 查詢錯誤", "detail": str(e)}, status=500)
 
