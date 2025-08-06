@@ -18,7 +18,7 @@ from rest_framework.response import Response
 from rest_framework_simplejwt.tokens import RefreshToken
 
 
-def get_user_response(user_profile):
+def get_user_response(user_profile: UserUserprofile) -> dict:
     if user_profile is None:
         return None
 
@@ -150,7 +150,7 @@ def google_callback(request) -> JsonResponse:
             print(f'Registered user: {user}')  # 印出使用者user
         
         # 使用者登入
-        response_data = get_user_response(profile_data)
+        response_data = get_user_response(user)
         if response_data is None:
             return JsonResponse({'error': 'Google Register failed'}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
             
