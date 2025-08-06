@@ -59,10 +59,10 @@ def process_scraped_data():
 def run():
     setup_site()            # 建立 Site 資料
     # setup_enrich_coord()  # 建立街道經緯度資料 (會跑很久，不需要測試快取的話可以關掉)
-    rebuild_dsl_indexes()   # 建立 Elasticsearch 對應document資料來建立索引
-    setup_category()        # 建立 Elasticsearch Category 資料
     import_streets()        # 匯入街道資料
     process_scraped_data()  # 處理爬蟲資料
+    rebuild_dsl_indexes()   # 建立 Elasticsearch 對應document資料來建立索引
+    setup_category()        # 建立 Elasticsearch Category 資料
 
 
 if __name__ == "__main__":
